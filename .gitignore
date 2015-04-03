@@ -1,0 +1,23 @@
+# Test Files
+api_key.txt
+
+# Java
+*.class
+
+# IDEs
+.idea*
+.project
+
+# sbt
+target/
+
+# Editors
+*.sw[a-z]
+*.~
+
+# MacOS X
+.DS_Store
+
+# Products
+proapi-client-1.0.0.jar
+proapi-client-java-javadoc.zip

@@ -1,0 +1,158 @@
+package com.whitepages.proapi.data.entity;
+
+import com.whitepages.proapi.data.association.LocationAssociation;
+import com.whitepages.proapi.data.util.TimePeriod;
+
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+/**
+ * The interface for Person {@link Entity} classes.
+ * @see com.whitepages.proapi.data.entity.Entity
+ */
+public interface Person extends LegalEntity {
+
+    public enum PersonType {
+        FULL,
+        LOCATION_MEMBER;
+
+        private static Map<String, PersonType> namesMap = new TreeMap<String, PersonType>(String.CASE_INSENSITIVE_ORDER);
+
+        static {
+            namesMap.put("Full", FULL);
+            namesMap.put("LocationMember", LOCATION_MEMBER);
+        }
+
+        @Override
+        public String toString() {
+            for (Map.Entry<String, PersonType> entry : namesMap.entrySet()) {
+                if (entry.getValue() == this)
+                    return entry.getKey();
+            }
+            return null;
+        }
+
+        public static PersonType forValue(String value) {
+            PersonType e = namesMap.get(value);
+            if (e == null)
+                throw new IllegalArgumentException(String.format("Invalid enum string. Got %s, expected ", value, namesMap.keySet()));
+            return e;
+        }
+    }
+
+    public enum Gender {
+        FEMALE,
+        MALE,
+        UNKNOWN;
+
+        private static Map<String, Gender> namesMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+
+        static {
+            namesMap.put("Female", FEMALE);
+            namesMap.put("Male", MALE);
+            namesMap.put("Unknown", UNKNOWN);
+        }
+
+        @Override
+        public String toString() {
+            for (Map.Entry<String, Gender> entry : namesMap.entrySet()) {
+                if (entry.getValue() == this)
+                    return entry.getKey();
+            }
+            return null;
+        }
+
+        public static Gender forValue(String value) {
+            Gender e = namesMap.get(value);
+            if (e == null)
+                throw new IllegalArgumentException(String.format("Invalid enum string. Got %s, expected ", value, namesMap.keySet()));
+            return e;
+        }
+    }
+
+    public PersonType getType();
+
+    public List<Name> getNames();
+
+    public AgeRange getAgeRange();
+
+    public Gender getGender();
+
+    public String getBestName();
+
+    public LocationAssociation getBestLocationAssociation();
+
+    public Location getBestLocation();
+
+    public static class Name {
+
+        private String salutation;
+        private String firstName;
+        private String middleName;
+        private String lastName;
+        private String suffix;
+        private TimePeriod validFor;
+
+        public Name(String salutation, String firstName, String middleName, String lastName, String suffix, TimePeriod validFor) {
+            this.salutation = salutation;
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
+            this.suffix = suffix;
+            this.validFor = validFor;
+        }
+
+        public Name(String firstName, String middleName, String lastName) {
+            this(null, firstName, middleName, lastName, null, null);
+        }
+
+        public Name(String firstName, String lastName) {
+            this(firstName, null, lastName);
+        }
+
+        public String getSalutation() {
+            return salutation;
+        }
+
+        public String getMiddleName() {
+            return middleName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public String getSuffix() {
+            return suffix;
+        }
+
+        public TimePeriod getValidFor() {
+            return validFor;
+        }
+
+
+        public String getFirstName() {
+            return firstName;
+        }
+    }
+
+    public static class AgeRange {
+        private int start;
+        private int end;
+
+        public AgeRange(int start, int end) {
+            this.start = start;
+            this.end = end;
+        }
+
+        public int getStart() {
+            return start;
+        }
+
+        public int getEnd() {
+            return end;
+        }
+    }
+
+}
