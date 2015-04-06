@@ -25,13 +25,13 @@ public class PersonQuery extends WhereQuery implements Query {
         super(id);
     }
 
-    public PersonQuery(String name, String city, String state, String postalCode) {
-        super(city, state, postalCode);
+    public PersonQuery(String name, String city, String stateCode, String postalCode) {
+        super(city, stateCode, postalCode);
         this.name = name;
     }
 
-    public PersonQuery(String firstName, String middleName, String lastName, String city, String state, String postalCode) {
-        super(city, state, postalCode);
+    public PersonQuery(String firstName, String middleName, String lastName, String city, String stateCode, String postalCode) {
+        super(city, stateCode, postalCode);
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
