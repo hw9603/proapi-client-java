@@ -1,7 +1,0 @@
-com.whitepages.proapi.api.client
-com.whitepages.proapi.api.query
-com.whitepages.proapi.api.response
-com.whitepages.proapi.data.association
-com.whitepages.proapi.data.entity
-com.whitepages.proapi.data.message
-com.whitepages.proapi.data.util
