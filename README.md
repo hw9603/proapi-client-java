@@ -69,6 +69,11 @@ To compile the JavaDoc documentation, use:
 sbt doc
 ```
 
+Changes to the project [Github.io Documentation](http://whitepages.github.io/proapi-client-java/)
+should be committed to the `gh-pages` branch. This typically involves copying
+the contends of the compiled documentation output directory into the project
+root when in the `gh-pages` branch.
+
 ## Class Structure Overview
 
 The starting point for all interactions is the class __Client__. Once a Client instance is
