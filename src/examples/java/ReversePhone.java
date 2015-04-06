@@ -34,8 +34,8 @@ public class ReversePhone {
             System.out.format( "ReversePhone lookup for %s was successful, returning %d root phone objects\n\n",
                                _PHONE, results.size() );
 
-            for ( Phone p : results ) {
-                ExampleUtils.dumpPhone( p, 2 );
+            for ( Phone phone : results ) {
+                ExampleUtils.dumpPhone( phone, 2 );
                 System.out.println();
             }
         }

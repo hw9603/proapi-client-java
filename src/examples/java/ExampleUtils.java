@@ -61,9 +61,9 @@ public class ExampleUtils {
 
     private static void dumpPerson( Person person, int depth, int indent ) {
         printName( person, indent );
-
-        // Could print out names list here
-
+        
+        simpleLine( indent, "Best Name:                   %s", person.getBestName()              );
+        simpleLine( indent, "Names:                       %s", person.getNames()                 );
         simpleLine( indent, "Age Range:                   %s", person.getAgeRange()              );
         simpleLine( indent, "Gender:                      %s", person.getGender()                );
         simpleLine( indent, "Type:                        %s", person.getType()                  );
@@ -105,7 +105,6 @@ public class ExampleUtils {
 
     private static void dumpBusiness( Business business, int depth, int indent ) {
         printName( business, indent );
-        // @@@
 
         dumpBaseEntity( business, depth, indent );
     }
@@ -120,29 +119,37 @@ public class ExampleUtils {
             List< BusinessAssociation > businesses = entity.getBusinessAssociations();
             if ( null != businesses && !businesses.isEmpty() ) {
                 simpleLine( indent, "Businesses:" );
-                for ( BusinessAssociation business : businesses )
+                for ( BusinessAssociation business : businesses ) {
                     dumpBusinessAssociation( business, depth - 1, indent + _INDENT );
+                    System.out.println();
+                }
             }
 
             List< LocationAssociation > locations  = entity.getLocationAssociations();
             if ( null != locations && !locations.isEmpty() ) {
                 simpleLine( indent, "Locations:" );
-                for ( LocationAssociation location : locations )
+                for ( LocationAssociation location : locations ) {
                     dumpLocationAssociation( location, depth - 1, indent + _INDENT );
+                    System.out.println();
+                }
             }
 
             List< PersonAssociation > people       = entity.getPersonAssociations();
             if ( null != people && !people.isEmpty() ) {
                 simpleLine( indent, "People:" );
-                for ( PersonAssociation person : people )
+                for ( PersonAssociation person : people ) {
                     dumpPersonAssociation( person, depth - 1, indent + _INDENT );
+                    System.out.println();
+                }
             }
 
             List< PhoneAssociation > phones        = entity.getPhoneAssociations();
             if ( null != phones && !phones.isEmpty() ) {
                 simpleLine( indent, "Phones:" );
-                for ( PhoneAssociation phone : phones )
+                for ( PhoneAssociation phone : phones ) {
                     dumpPhoneAssociation( phone, depth - 1, indent + _INDENT );
+                    System.out.println();
+                }
             }
 
         }
