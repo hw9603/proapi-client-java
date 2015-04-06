@@ -71,8 +71,8 @@ sbt doc
 
 Changes to the project [Github.io Documentation](http://whitepages.github.io/proapi-client-java/)
 should be committed to the `gh-pages` branch. This typically involves copying
-the contends of the compiled documentation output directory into the project
-root when in the `gh-pages` branch.
+the compiled documentation directory into the project, replacing the existing
+javadocs directory, when in the `gh-pages` branch.
 
 ## Class Structure Overview
 
