@@ -207,20 +207,13 @@ public class ExampleUtils {
         if ( null == latLong )
             return "null";
 
-        return String.format( "[Lat=%f; Long=%f; Accuracy=%s]",
-                              latLong.getLatitude(),
-                              latLong.getLongitude(),
-                              latLong.getGeoAccuracy() );
+        return latLong.toString();
     }
 
     private static String stringify( TimePeriod period ) {
         if ( null == period )
             return "null";
 
-        return String.format( "[start=%s; stop=%s; current=%s; historical=%s]",
-                              period.getStart(),
-                              period.getStop(),
-                              period.isCurrent(),
-                              period.isHistorical() );
+        return period.toString();
     }
 }

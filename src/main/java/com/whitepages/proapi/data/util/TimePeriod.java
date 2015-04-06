@@ -34,6 +34,9 @@ public class TimePeriod {
 
     @Override
     public String toString() {
-        return String.format( "[TimePeriod: start=%s; stop=%s]", start, stop );
+        return "TimePeriod{" +
+                "start=" + start +
+                ", stop=" + stop +
+                '}';
     }
 }

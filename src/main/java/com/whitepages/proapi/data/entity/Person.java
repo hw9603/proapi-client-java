@@ -138,8 +138,14 @@ public interface Person extends LegalEntity {
 
         @Override
         public String toString() {
-            return String.format( "[Name: salutation=%s; first=%s; middle=%s; last=%s; suffix=%s; valid_for=%s]",
-                                  salutation, firstName, middleName, lastName, suffix, validFor );
+            return "Name{" +
+                    "salutation='" + salutation + '\'' +
+                    ", firstName='" + firstName + '\'' +
+                    ", middleName='" + middleName + '\'' +
+                    ", lastName='" + lastName + '\'' +
+                    ", suffix='" + suffix + '\'' +
+                    ", validFor=" + validFor +
+                    '}';
         }
     }
 
@@ -162,7 +168,10 @@ public interface Person extends LegalEntity {
 
         @Override
         public String toString() {
-            return String.format( "[AgeRange: start=%d; end=%d]", start, end );
+            return "AgeRange{" +
+                    "start=" + start +
+                    ", end=" + end +
+                    '}';
         }
     }
 
