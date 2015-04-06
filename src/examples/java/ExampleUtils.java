@@ -105,7 +105,6 @@ public class ExampleUtils {
 
     private static void dumpBusiness( Business business, int depth, int indent ) {
         printName( business, indent );
-        // @@@
 
         dumpBaseEntity( business, depth, indent );
     }

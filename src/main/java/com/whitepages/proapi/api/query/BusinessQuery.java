@@ -20,6 +20,11 @@ public class BusinessQuery extends WhereQuery implements Query {
         this.name = name;
     }
 
+    public BusinessQuery(String name, String city, String state, String postalCode) {
+        super(city, state, postalCode);
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
