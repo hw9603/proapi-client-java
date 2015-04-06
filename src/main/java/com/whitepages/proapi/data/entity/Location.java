@@ -341,5 +341,13 @@ public interface Location extends Entity {
             return geoAccuracy;
         }
 
+        @Override
+        public String toString() {
+            return "LatLong{" +
+                    "latitude=" + latitude +
+                    ", longitude=" + longitude +
+                    ", geoAccuracy=" + geoAccuracy +
+                    '}';
+        }
     }
 }
