@@ -135,6 +135,12 @@ public interface Person extends LegalEntity {
         public String getFirstName() {
             return firstName;
         }
+
+        @Override
+        public String toString() {
+            return String.format( "[Name: salutation=%s; first=%s; middle=%s; last=%s; suffix=%s; valid_for=%s]",
+                                  salutation, firstName, middleName, lastName, suffix, validFor );
+        }
     }
 
     public static class AgeRange {
@@ -152,6 +158,11 @@ public interface Person extends LegalEntity {
 
         public int getEnd() {
             return end;
+        }
+
+        @Override
+        public String toString() {
+            return String.format( "[AgeRange: start=%d; end=%d]", start, end );
         }
     }
 

@@ -31,4 +31,9 @@ public class TimePeriod {
     public boolean isCurrent() {
         return !isHistorical();
     }
+
+    @Override
+    public String toString() {
+        return String.format( "[TimePeriod: start=%s; stop=%s]", start, stop );
+    }
 }
