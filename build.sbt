@@ -8,9 +8,6 @@ version := "1.0.1-SNAPSHOT"
 
 description := "Whitepages PROAPI Client Library for Java"
 
-// Enables publishing to maven repo
-publishMavenStyle := true
-
 // Do not append Scala versions to the generated artifacts
 crossPaths := false
 
@@ -34,9 +31,46 @@ javacOptions in (Compile, doc) ++= Seq(
   "-public",
   "-windowtitle", "Whitepages PRO API Java Docs",
   "-doctitle", "Whitepages Pro API",
-  "-footer", "&copy;2015, Whitepages, Inc.",
-  "-exclude", "com.whitepages.proapi.api.client.datasources"
+  "-footer", "&copy;2015, Whitepages, Inc."
 )
+
+mappings in (Compile, packageSrc) <+= baseDirectory map { base =>
+  (base / "LICENSE.txt") -> "LICENSE.txt"
+}
+
+// ===== Maven Central Repo Configuration =====
+
+publishMavenStyle := true
+
+licenses := Seq("MIT" -> url("https://github.com/whitepages/proapi-client-java/blob/master/LICENSE.txt"))
+
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+}
+
+publishArtifact in Test := false
+
+pomIncludeRepository := { _ => false }
+
+pomExtra :=
+  <url>https://github.com/whitepages/proapi-client-java</url>
+    <scm>
+      <url>git@github.com:whitepages/proapi-client-java.git</url>
+      <connection>scm:git:git@github.com:whitepages/proapi-client-java.git</connection>
+    </scm>
+    <developers>
+      <developer>
+        <id>whitepages</id>
+        <name>Whitepages PRO</name>
+        <organization>Whitepages, Inc.</organization>
+        <organizationUrl>http://pro.whitepages.com/</organizationUrl>
+        <timezone>-8</timezone>
+      </developer>
+    </developers>
+
+// ===== Documentation Source Selection ===== //
 
 //A list of directories to exclude from documentation, as path substrings.
 val excludedDocDirs = Seq(
