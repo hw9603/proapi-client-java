@@ -76,15 +76,36 @@ public interface Phone extends Entity {
 
     public static class Reputation {
 
-        public Reputation(int spamScore) {
+        public Reputation(int spamScore,
+			  int spamIndex,
+			  int volumeScore,
+			  int reportCount) {
             this.spamScore = spamScore;
+	    this.spamIndex = spamIndex;
+	    this.volumeScore = volumeScore;
+	    this.reportCount = reportCount;
         }
 
         public Integer getSpamScore() {
             return spamScore;
         }
 
-        private Integer spamScore;
+	public Integer getSpamIndex() {
+            return spamIndex;
+        }
+
+	public Integer getVolumeScore() {
+            return volumeScore;
+        }
+
+	public Integer getReportCount() {
+            return reportCount;
+        }
+
+	private Integer spamScore;
+	private Integer spamIndex;
+	private Integer volumeScore;
+	private Integer reportCount;
 
     }
 }
