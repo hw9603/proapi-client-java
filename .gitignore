@@ -21,3 +21,9 @@ target/
 # Products
 proapi-client-1.0.0.jar
 proapi-client-java-javadoc.zip
+
+# Eclipse project files
+.classpath
+.project
+.metadata/
+bin/
