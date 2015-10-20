@@ -67,6 +67,22 @@
      "contact_type":"Business",
      "contact_creation_date":null
     }
+   ],
+   "urls":[
+    {
+     "url":"http://zeekspizza.com/locations-hours/zeeks-pizza-phinney-ridge/",
+     "display_name":"website",
+     "type":"website",
+     "extended_type":null,
+     "sharing_level":null
+    },
+    {
+     "url":"http://2jxweq.yext-wraps.com/plclick?pid=e56579245c&ids=1062324&continue=http%3A%2F%2Fzeekspizza.com%2Flocations-hours%2Fzeeks-pizza-phinney-ridge%2F&target=specialOffer",
+     "display_name":"Pizza by the Slice, Delivery and Dine In!",
+     "type":"special_offer",
+     "extended_type":null,
+     "sharing_level":null
+    }
    ]
   },
   "Business.a5a6a176-3032-43fa-82c9-589d7a3069b9.Durable":{

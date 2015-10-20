@@ -62,6 +62,22 @@ public class PhoneProAPI20JSONStreamResponseDecoderTest {
     }
 
     @Test
+    public void hasNoConnected() {
+    	assertThat(phone.getConnected(), is(nullValue()));
+    }
+    
+    @Test
+    public void hasReputationLevel() {
+    	assertThat(phone.getReputation().getLevel(), is(not(nullValue())));
+    }
+    
+    @Test
+    public void hasReputationDetails() {
+    	assertThat(phone.getReputation().getDetails().size(), is(1));
+    	assertThat((phone.getReputation().getDetails()).get(0).getScore(), is(2));
+    }
+    
+    @Test
     public void hasNoPhoneAssociations() {
         assertThat(phone.getPhoneAssociations(), is(nullValue()));
     }

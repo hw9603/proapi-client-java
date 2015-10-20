@@ -21,7 +21,8 @@ public class PhoneImpl extends EntityImpl implements Phone {
     private Boolean doNotCall;
     private Boolean prepaid;
     private Boolean valid;
-
+    private Boolean connected;
+    
     private Location bestLocation;
     private LocationAssociation bestLocationAssociation;
 
@@ -103,6 +104,14 @@ public class PhoneImpl extends EntityImpl implements Phone {
         this.valid = valid;
     }
 
+    public Boolean getConnected() {
+    	return connected;
+    }
+    
+    public void setConnected(Boolean connected) {
+    	this.connected = connected;
+    }
+    
     public LocationAssociation getBestLocationAssociation() {
         return bestLocationAssociation;
     }

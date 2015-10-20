@@ -4,6 +4,8 @@ import com.whitepages.proapi.api.client.FindException;
 import com.whitepages.proapi.api.query.PhoneQuery;
 import com.whitepages.proapi.api.response.Response;
 import com.whitepages.proapi.data.entity.Phone;
+
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,6 +26,14 @@ public class PhoneLookupTest extends EntityLookupTest<Phone> {
         }
         assertThat("Should find 2069735100 in results", found);
     }
+    
+    @Test
+    public void resultShouldContainConnected() throws FindException {
+        
+        for(Phone result : getResponse().getResults()) {
+            System.out.println("isConnected: " + result.getConnected());
+        }
+    }    
 
     @Override
     protected Response<Phone> performQuery() throws FindException {

@@ -2,6 +2,7 @@ package com.whitepages.proapi.data.entity;
 
 import com.whitepages.proapi.data.association.LocationAssociation;
 
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -70,42 +71,106 @@ public interface Phone extends Entity {
 
     public Boolean getValid();
 
+    public Boolean getConnected();
+    
     public LocationAssociation getBestLocationAssociation();
 
     public Location getBestLocation();
 
+    public static class ReputationDetails {
+    	
+    	public ReputationDetails() {
+    		
+    	}
+    	
+    	public ReputationDetails(int score,
+    			String type,
+    			String category) {
+    		this.score = score;
+    		this.type = type;
+    		this.category = category;
+    	}
+    	
+    	private Integer score;
+    	private String type;
+    	private String category;
+    	
+    	public Integer getScore() {
+    		return this.score;
+    	}
+    	
+    	public String getType() {
+    		return this.type;
+    	}
+    	
+    	public String getCategory() {
+    		return this.category;
+    	}
+    	
+        @Override
+        public String toString() {
+            return "ReputationDetails{" +
+                    "score=" + score +
+                    ", type=" + type +
+                    ", category=" + category +
+                    '}';
+        }
+
+    }
     public static class Reputation {
 
-        public Reputation(int spamScore,
-			  int spamIndex,
-			  int volumeScore,
-			  int reportCount) {
-            this.spamScore = spamScore;
-	    this.spamIndex = spamIndex;
-	    this.volumeScore = volumeScore;
-	    this.reportCount = reportCount;
+    	public Reputation(int level,
+        		int spamScore,
+				int spamIndex,
+				int volumeScore,
+				int reportCount) {
+			this(level, spamScore, spamIndex, volumeScore, reportCount, null);
+        }
+    	
+        public Reputation(int level,
+        		int spamScore,
+				int spamIndex,
+				int volumeScore,
+				int reportCount,
+				List<ReputationDetails> details) {
+			this.level = level;
+			this.spamScore = spamScore;
+			this.spamIndex = spamIndex;
+			this.volumeScore = volumeScore;
+			this.reportCount = reportCount;
+			this.details = details;
         }
 
         public Integer getSpamScore() {
             return spamScore;
         }
+	
+		public Integer getSpamIndex() {
+	            return spamIndex;
+	        }
+	
+		public Integer getVolumeScore() {
+	            return volumeScore;
+	        }
+	
+		public Integer getReportCount() {
+	            return reportCount;
+	        }
 
-	public Integer getSpamIndex() {
-            return spamIndex;
-        }
-
-	public Integer getVolumeScore() {
-            return volumeScore;
-        }
-
-	public Integer getReportCount() {
-            return reportCount;
-        }
-
-	private Integer spamScore;
-	private Integer spamIndex;
-	private Integer volumeScore;
-	private Integer reportCount;
-
+		public Integer getLevel() {
+			return level;
+		}
+		
+		public List<ReputationDetails> getDetails() {
+			return this.details;
+		}
+		
+		private List<ReputationDetails> details;
+		private Integer spamScore;
+		private Integer spamIndex;
+		private Integer volumeScore;
+		private Integer reportCount;
+		private Integer level;
+	
     }
 }
