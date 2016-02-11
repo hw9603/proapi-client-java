@@ -161,7 +161,6 @@ public class ExampleUtils {
     }
 
     private static void dumpLocationAssociation( LocationAssociation association, int depth, int indent ) {
-        simpleLine( indent, "Contact Type:                %s", association.getContactType() );
         simpleLine( indent, "Location:" );
         dumpLocation( association.getLocation(), depth, indent + _INDENT );
     }
@@ -171,7 +170,6 @@ public class ExampleUtils {
     }
 
     private static void dumpPhoneAssociation( PhoneAssociation association, int depth, int indent ) {
-        simpleLine( indent, "Contact Type:                %s", association.getContactType() );
         simpleLine( indent, "Phone:" );
         dumpPhone( association.getPhone(), depth, indent + _INDENT );
         
