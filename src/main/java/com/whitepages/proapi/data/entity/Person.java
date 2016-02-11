@@ -79,10 +79,6 @@ public interface Person extends LegalEntity {
 
     public Gender getGender();
 
-    public LocationAssociation getBestLocationAssociation();
-
-    public Location getBestLocation();
-
     public static class Name {
 
         private String salutation;

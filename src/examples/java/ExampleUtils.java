@@ -65,8 +65,6 @@ public class ExampleUtils {
         simpleLine( indent, "Gender:                      %s", person.getGender()                );
         simpleLine( indent, "Type:                        %s", person.getType()                  );
 
-        bestLocation( person.getBestLocation(), depth, indent );
-
         dumpBaseEntity( person, depth, indent );
     }
 

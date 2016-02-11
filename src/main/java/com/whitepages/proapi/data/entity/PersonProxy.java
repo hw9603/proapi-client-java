@@ -56,14 +56,4 @@ public class PersonProxy extends EntityProxy implements Person {
     public Gender getGender() {
         return (person == null) ? null : person.getGender();
     }
-
-    @Override
-    public LocationAssociation getBestLocationAssociation() {
-        return (person == null) ? null : person.getBestLocationAssociation();
-    }
-
-    @Override
-    public Location getBestLocation() {
-        return (person == null) ? null : person.getBestLocation();
-    }
 }
