@@ -103,16 +103,6 @@ public class LocationProxy extends EntityProxy implements Location {
     }
 
     @Override
-    public String getPreDir() {
-        return (location == null) ? null : location.getPreDir();
-    }
-
-    @Override
-    public String getPostDir() {
-        return (location == null) ? null : location.getPostDir();
-    }
-
-    @Override
     public String getAptNumber() {
         return (location == null) ? null : location.getAptNumber();
     }

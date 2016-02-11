@@ -209,10 +209,6 @@ public interface Location extends Entity {
 
     public String getStreetType();
 
-    public String getPreDir();
-
-    public String getPostDir();
-
     public String getAptNumber();
 
     public String getBoxNumber();

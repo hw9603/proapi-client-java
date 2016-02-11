@@ -85,8 +85,6 @@ public class ExampleUtils {
         simpleLine( indent, "Latitude/Longitude:          %s", stringify( location.getLatLong() )    );
         simpleLine( indent, "Not Receiving Mail Reason:   %s", location.getNotReceivingMailReason()  );
         simpleLine( indent, "Postal Code:                 %s", location.getPostalCode()              );
-        simpleLine( indent, "Post Directional:            %s", location.getPostDir()                 );
-        simpleLine( indent, "Pre Directional:             %s", location.getPreDir()                  );
         simpleLine( indent, "Receiving Mail:              %s", location.getReceivingMail()           );
         simpleLine( indent, "Standard Address Line1:      %s", location.getStandardAddressLine1()    );
         simpleLine( indent, "Standard Address Line2:      %s", location.getStandardAddressLine2()    );
