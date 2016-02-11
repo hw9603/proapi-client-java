@@ -81,9 +81,6 @@ abstract class LocationAnnotations extends EntityAnnotations {
     @JsonProperty("delivery_point")
     abstract Location.DeliveryPoint getDeliveryPoint();
 
-    @JsonProperty("box_type")
-    abstract Location.BoxType getBoxType();
-
     @JsonProperty("address_type")
     abstract Location.AddressType getAddressType();
 

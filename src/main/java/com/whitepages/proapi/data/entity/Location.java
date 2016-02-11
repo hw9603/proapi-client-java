@@ -146,45 +146,7 @@ public interface Location extends Entity {
             return e;
         }
     }
-
-    public enum BoxType {
-        FACILITY,
-        CONTEST,
-        DETACHED,
-        NON_PERSONNEL_UNIT,
-        SCHOOL,
-        REMITTANCE,
-        CALLER_SERVICE;
-
-        private static Map<String, BoxType> namesMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-
-        static {
-            namesMap.put("Facility", FACILITY);
-            namesMap.put("Contest", CONTEST);
-            namesMap.put("Detached", DETACHED);
-            namesMap.put("NonPersonnelUnit", NON_PERSONNEL_UNIT);
-            namesMap.put("School", SCHOOL);
-            namesMap.put("Remittance", REMITTANCE);
-            namesMap.put("CallerService", CALLER_SERVICE);
-        }
-
-        @Override
-        public String toString() {
-            for (Map.Entry<String, BoxType> entry : namesMap.entrySet()) {
-                if (entry.getValue() == this)
-                    return entry.getKey();
-            }
-            return null;
-        }
-
-        public static BoxType forValue(String value) {
-            BoxType e = namesMap.get(value);
-            if (e == null)
-                throw new IllegalArgumentException(String.format("Invalid enum string. Got %s, expected ", value, namesMap.keySet()));
-            return e;
-        }
-    }
-
+    
     public enum AddressType {
         FIRM,
         GENERAL_DELIVERY,
@@ -266,8 +228,6 @@ public interface Location extends Entity {
     public AddressUsage getUsage();
 
     public DeliveryPoint getDeliveryPoint();
-
-    public BoxType getBoxType();
 
     public AddressType getAddressType();
 

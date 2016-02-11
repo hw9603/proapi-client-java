@@ -153,11 +153,6 @@ public class LocationProxy extends EntityProxy implements Location {
     }
 
     @Override
-    public BoxType getBoxType() {
-        return (location == null) ? null : location.getBoxType();
-    }
-
-    @Override
     public AddressType getAddressType() {
         return (location == null) ? null : location.getAddressType();
     }

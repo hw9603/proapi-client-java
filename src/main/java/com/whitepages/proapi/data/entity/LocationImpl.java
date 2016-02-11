@@ -38,9 +38,7 @@ public class LocationImpl extends EntityImpl implements Location {
     private AddressUsage usage;
 
     private DeliveryPoint deliveryPoint;
-
-    private BoxType boxType;
-
+    
     private AddressType addressType;
 
     private LatLong latLong;
@@ -235,14 +233,6 @@ public class LocationImpl extends EntityImpl implements Location {
 
     public void setDeliveryPoint(DeliveryPoint deliveryPoint) {
         this.deliveryPoint = deliveryPoint;
-    }
-
-    public BoxType getBoxType() {
-        return boxType;
-    }
-
-    public void setBoxType(BoxType boxType) {
-        this.boxType = boxType;
     }
 
     public AddressType getAddressType() {
