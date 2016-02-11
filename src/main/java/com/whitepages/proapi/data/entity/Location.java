@@ -205,10 +205,6 @@ public interface Location extends Entity {
 
     public String getHouse();
 
-    public String getStreetName();
-
-    public String getStreetType();
-
     public String getAptNumber();
 
     public String getBoxNumber();

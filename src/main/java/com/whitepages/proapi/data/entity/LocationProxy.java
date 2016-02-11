@@ -93,16 +93,6 @@ public class LocationProxy extends EntityProxy implements Location {
     }
 
     @Override
-    public String getStreetName() {
-        return (location == null) ? null : location.getStreetName();
-    }
-
-    @Override
-    public String getStreetType() {
-        return (location == null) ? null : location.getStreetType();
-    }
-
-    @Override
     public String getAptNumber() {
         return (location == null) ? null : location.getAptNumber();
     }

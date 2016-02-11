@@ -89,8 +89,6 @@ public class ExampleUtils {
         simpleLine( indent, "Standard Address Line1:      %s", location.getStandardAddressLine1()    );
         simpleLine( indent, "Standard Address Line2:      %s", location.getStandardAddressLine2()    );
         simpleLine( indent, "State Code:                  %s", location.getStateCode()               );
-        simpleLine( indent, "Street Name:                 %s", location.getStreetName()              );
-        simpleLine( indent, "Street Type:                 %s", location.getStreetType()              );
         simpleLine( indent, "Usage:                       %s", location.getUsage()                   );
         simpleLine( indent, "ValidFor:                    %s", stringify( location.getValidFor() )   );
         simpleLine( indent, "Zip4:                        %s", location.getZip4()                    );
