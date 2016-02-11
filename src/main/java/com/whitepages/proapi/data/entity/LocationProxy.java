@@ -83,16 +83,6 @@ public class LocationProxy extends EntityProxy implements Location {
     }
 
     @Override
-    public String getHouse() {
-        return (location == null) ? null : location.getHouse();
-    }
-
-    @Override
-    public String getBoxNumber() {
-        return (location == null) ? null : location.getBoxNumber();
-    }
-
-    @Override
     public TimePeriod getValidFor() {
         return (location == null) ? null : location.getValidFor();
     }

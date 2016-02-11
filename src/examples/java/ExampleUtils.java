@@ -75,12 +75,10 @@ public class ExampleUtils {
         printName( location, indent );
         simpleLine( indent, "Address:                     %s", location.getAddress()                 );
         simpleLine( indent, "Address Type:                %s", location.getAddressType()             );
-        simpleLine( indent, "Box Number:                  %s", location.getBoxNumber()               );
         simpleLine( indent, "City:                        %s", location.getCity()                    );
         simpleLine( indent, "CountryCode:                 %s", location.getCountryCode()             );
         simpleLine( indent, "Deliverable:                 %s", location.getDeliverable()             );
         simpleLine( indent, "Delivery Point:              %s", location.getDeliveryPoint()           );
-        simpleLine( indent, "House:                       %s", location.getHouse()                   );
         simpleLine( indent, "Latitude/Longitude:          %s", stringify( location.getLatLong() )    );
         simpleLine( indent, "Not Receiving Mail Reason:   %s", location.getNotReceivingMailReason()  );
         simpleLine( indent, "Postal Code:                 %s", location.getPostalCode()              );

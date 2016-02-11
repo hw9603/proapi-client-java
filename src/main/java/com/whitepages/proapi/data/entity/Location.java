@@ -201,10 +201,6 @@ public interface Location extends Entity {
 
     public String getZip4();
 
-    public String getHouse();
-
-    public String getBoxNumber();
-
     public TimePeriod getValidFor();
 
     public Boolean getReceivingMail();
