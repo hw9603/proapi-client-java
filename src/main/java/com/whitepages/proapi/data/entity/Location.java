@@ -199,13 +199,9 @@ public interface Location extends Entity {
 
     public String getCountryCode();
 
-    public String getAptType();
-
     public String getZip4();
 
     public String getHouse();
-
-    public String getAptNumber();
 
     public String getBoxNumber();
 

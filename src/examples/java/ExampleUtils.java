@@ -75,7 +75,6 @@ public class ExampleUtils {
         printName( location, indent );
         simpleLine( indent, "Address:                     %s", location.getAddress()                 );
         simpleLine( indent, "Address Type:                %s", location.getAddressType()             );
-        simpleLine( indent, "Apartment Number:            %s", location.getAptNumber()               );
         simpleLine( indent, "Box Number:                  %s", location.getBoxNumber()               );
         simpleLine( indent, "City:                        %s", location.getCity()                    );
         simpleLine( indent, "CountryCode:                 %s", location.getCountryCode()             );

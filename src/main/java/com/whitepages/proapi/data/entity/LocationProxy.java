@@ -78,11 +78,6 @@ public class LocationProxy extends EntityProxy implements Location {
     }
 
     @Override
-    public String getAptType() {
-        return (location == null) ? null : location.getAptType();
-    }
-
-    @Override
     public String getZip4() {
         return (location == null) ? null : location.getZip4();
     }
@@ -90,11 +85,6 @@ public class LocationProxy extends EntityProxy implements Location {
     @Override
     public String getHouse() {
         return (location == null) ? null : location.getHouse();
-    }
-
-    @Override
-    public String getAptNumber() {
-        return (location == null) ? null : location.getAptNumber();
     }
 
     @Override
