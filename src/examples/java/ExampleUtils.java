@@ -73,7 +73,6 @@ public class ExampleUtils {
 
     private static void dumpLocation( Location location, int depth, int indent ) {
         printName( location, indent );
-        simpleLine( indent, "Address:                     %s", location.getAddress()                 );
         simpleLine( indent, "Address Type:                %s", location.getAddressType()             );
         simpleLine( indent, "City:                        %s", location.getCity()                    );
         simpleLine( indent, "CountryCode:                 %s", location.getCountryCode()             );
