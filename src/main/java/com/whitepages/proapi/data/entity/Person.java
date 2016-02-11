@@ -56,19 +56,17 @@ public interface Person extends LegalEntity {
         private String middleName;
         private String lastName;
         private String suffix;
-        private TimePeriod validFor;
-
-        public Name(String salutation, String firstName, String middleName, String lastName, String suffix, TimePeriod validFor) {
+        
+        public Name(String salutation, String firstName, String middleName, String lastName, String suffix) {
             this.salutation = salutation;
             this.firstName = firstName;
             this.middleName = middleName;
             this.lastName = lastName;
             this.suffix = suffix;
-            this.validFor = validFor;
         }
 
         public Name(String firstName, String middleName, String lastName) {
-            this(null, firstName, middleName, lastName, null, null);
+            this(null, firstName, middleName, lastName, null);
         }
 
         public Name(String firstName, String lastName) {
@@ -91,11 +89,6 @@ public interface Person extends LegalEntity {
             return suffix;
         }
 
-        public TimePeriod getValidFor() {
-            return validFor;
-        }
-
-
         public String getFirstName() {
             return firstName;
         }
@@ -108,7 +101,6 @@ public interface Person extends LegalEntity {
                     ", middleName='" + middleName + '\'' +
                     ", lastName='" + lastName + '\'' +
                     ", suffix='" + suffix + '\'' +
-                    ", validFor=" + validFor +
                     '}';
         }
     }
