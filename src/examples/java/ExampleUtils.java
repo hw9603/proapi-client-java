@@ -90,7 +90,6 @@ public class ExampleUtils {
         simpleLine( indent, "Receiving Mail:              %s", location.getReceivingMail()           );
         simpleLine( indent, "Standard Address Line1:      %s", location.getStandardAddressLine1()    );
         simpleLine( indent, "Standard Address Line2:      %s", location.getStandardAddressLine2()    );
-        simpleLine( indent, "Standard Address Location:   %s", location.getStandardAddressLocation() );
         simpleLine( indent, "State Code:                  %s", location.getStateCode()               );
         simpleLine( indent, "Street Name:                 %s", location.getStreetName()              );
         simpleLine( indent, "Street Type:                 %s", location.getStreetType()              );

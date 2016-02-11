@@ -191,8 +191,6 @@ public interface Location extends Entity {
 
     public String getStandardAddressLine2();
 
-    public String getStandardAddressLocation();
-
     public String getCity();
 
     public String getPostalCode();
