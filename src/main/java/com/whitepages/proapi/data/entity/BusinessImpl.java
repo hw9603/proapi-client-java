@@ -25,9 +25,4 @@ public class BusinessImpl extends EntityImpl implements Business {
         return this.name;
     }
     
-    public List<Business.Url> getUrls() {
-    	return this.urls;
-    }
-    
-    private List<Business.Url> urls;
 }

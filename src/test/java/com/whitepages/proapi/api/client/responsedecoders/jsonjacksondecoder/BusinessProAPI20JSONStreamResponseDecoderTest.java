@@ -47,9 +47,4 @@ public class BusinessProAPI20JSONStreamResponseDecoderTest {
     public void hasNoPersonAssociations() {
         assertThat(business.getPersonAssociations(), is(nullValue()));
     }
-
-    @Test
-    public void hasUrls() {
-    	assertThat(business.getUrls().size(), is(2));
-    }
 }

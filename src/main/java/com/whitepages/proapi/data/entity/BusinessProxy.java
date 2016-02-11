@@ -20,10 +20,6 @@ public class BusinessProxy extends EntityProxy implements Business {
     public BusinessProxy(EntityId entityId, Client client) {
         super(entityId, client);
     }
-
-    public List<Business.Url> getUrls() {
-    	return (this.business == null) ? null : this.business.getUrls();
-    }
     
     @Override
     protected Entity getEntity() {

@@ -20,7 +20,4 @@ abstract class BusinessAnnotations extends EntityAnnotations {
 
     @JsonProperty("phones")
     abstract List<PhoneAssociation> getPhoneAssociations();
-
-    @JsonProperty("urls")
-    abstract List<Business.Url> getUrls();
 }
