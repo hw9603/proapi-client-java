@@ -16,7 +16,7 @@ import java.util.Date;
  * @see com.whitepages.proapi.data.entity.Location
  * @see com.whitepages.proapi.data.association.Association
  */
-public class LocationAssociation extends Association {
+public class LocationAssociation extends Association implements HistoricalAssociation {
 
     public LocationAssociation(EntityId entityId, ResponseDictionary responseDictionary) {
         super(entityId, responseDictionary);
@@ -39,5 +39,26 @@ public class LocationAssociation extends Association {
     public EntityId.EntityType getEntityIdType() {
         return EntityId.EntityType.LOCATION;
     }
+    
+    @Override
+    public TimePeriod getValidFor() {
+        return super.getValidFor();
+    }
+
+    @Override
+    public void setValidFor(TimePeriod validFor) {
+        super.setValidFor(validFor);
+    }
+
+    @Override
+    public Boolean getHistorical() {
+        return super.getHistorical();
+    }
+
+    @Override
+    public void setHistorical(Boolean historical) {
+        super.setHistorical(historical);
+    }
+
 
 }

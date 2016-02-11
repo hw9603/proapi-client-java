@@ -80,19 +80,19 @@ public abstract class Association {
 
     public abstract EntityId.EntityType getEntityIdType();
 
-    public TimePeriod getValidFor() {
+    protected TimePeriod getValidFor() {
         return validFor;
     }
 
-    public void setValidFor(TimePeriod validFor) {
+    protected void setValidFor(TimePeriod validFor) {
         this.validFor = validFor;
     }
 
-    public Boolean getHistorical() {
+    protected Boolean getHistorical() {
         return historical;
     }
 
-    public void setHistorical(Boolean historical) {
+    protected void setHistorical(Boolean historical) {
         this.historical = historical;
     }
 
