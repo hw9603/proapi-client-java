@@ -63,7 +63,6 @@ public class ExampleUtils {
         simpleLine( indent, "Names:                       %s", person.getNames()                 );
         simpleLine( indent, "Age Range:                   %s", person.getAgeRange()              );
         simpleLine( indent, "Gender:                      %s", person.getGender()                );
-        simpleLine( indent, "Type:                        %s", person.getType()                  );
 
         dumpBaseEntity( person, depth, indent );
     }

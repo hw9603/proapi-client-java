@@ -12,9 +12,6 @@ import java.util.List;
  */
 abstract class PersonAnnotations extends EntityAnnotations {
 
-    @JsonProperty("type")
-    abstract Person.PersonType getType();
-
     @JsonProperty("names")
     abstract List<Person.Name> getNames();
 

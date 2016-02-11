@@ -13,34 +13,6 @@ import java.util.TreeMap;
  */
 public interface Person extends LegalEntity {
 
-    public enum PersonType {
-        FULL,
-        LOCATION_MEMBER;
-
-        private static Map<String, PersonType> namesMap = new TreeMap<String, PersonType>(String.CASE_INSENSITIVE_ORDER);
-
-        static {
-            namesMap.put("Full", FULL);
-            namesMap.put("LocationMember", LOCATION_MEMBER);
-        }
-
-        @Override
-        public String toString() {
-            for (Map.Entry<String, PersonType> entry : namesMap.entrySet()) {
-                if (entry.getValue() == this)
-                    return entry.getKey();
-            }
-            return null;
-        }
-
-        public static PersonType forValue(String value) {
-            PersonType e = namesMap.get(value);
-            if (e == null)
-                throw new IllegalArgumentException(String.format("Invalid enum string. Got %s, expected ", value, namesMap.keySet()));
-            return e;
-        }
-    }
-
     public enum Gender {
         FEMALE,
         MALE,
@@ -70,8 +42,6 @@ public interface Person extends LegalEntity {
             return e;
         }
     }
-
-    public PersonType getType();
 
     public List<Name> getNames();
 

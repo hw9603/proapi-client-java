@@ -38,11 +38,6 @@ public class PersonProxy extends EntityProxy implements Person {
     }
 
     @Override
-    public PersonType getType() {
-        return (person == null) ? null : person.getType();
-    }
-
-    @Override
     public List<Name> getNames() {
         return (person == null) ? null : person.getNames();
     }
