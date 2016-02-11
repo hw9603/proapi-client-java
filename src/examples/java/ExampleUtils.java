@@ -60,7 +60,6 @@ public class ExampleUtils {
     private static void dumpPerson( Person person, int depth, int indent ) {
         printName( person, indent );
         
-        simpleLine( indent, "Best Name:                   %s", person.getBestName()              );
         simpleLine( indent, "Names:                       %s", person.getNames()                 );
         simpleLine( indent, "Age Range:                   %s", person.getAgeRange()              );
         simpleLine( indent, "Gender:                      %s", person.getGender()                );

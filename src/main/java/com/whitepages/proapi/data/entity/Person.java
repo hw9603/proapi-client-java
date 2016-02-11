@@ -79,8 +79,6 @@ public interface Person extends LegalEntity {
 
     public Gender getGender();
 
-    public String getBestName();
-
     public LocationAssociation getBestLocationAssociation();
 
     public Location getBestLocation();

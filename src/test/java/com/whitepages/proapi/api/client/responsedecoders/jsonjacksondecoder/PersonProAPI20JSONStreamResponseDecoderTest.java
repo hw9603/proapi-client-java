@@ -37,11 +37,6 @@ public class PersonProAPI20JSONStreamResponseDecoderTest {
     }
 
     @Test
-    public void hasBestName() {
-        assertThat(person.getBestName(), is("Jane A Smith"));
-    }
-
-    @Test
     public void hasNames() {
         assertThat(person.getNames().get(0).getFirstName(), is("Jane"));
         assertThat(person.getNames().get(0).getMiddleName(), is("A"));

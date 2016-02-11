@@ -58,11 +58,6 @@ public class PersonProxy extends EntityProxy implements Person {
     }
 
     @Override
-    public String getBestName() {
-        return (person == null) ? null : person.getBestName();
-    }
-
-    @Override
     public LocationAssociation getBestLocationAssociation() {
         return (person == null) ? null : person.getBestLocationAssociation();
     }
