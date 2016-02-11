@@ -73,10 +73,6 @@ public interface Phone extends Entity {
 
     public Boolean getConnected();
     
-    public LocationAssociation getBestLocationAssociation();
-
-    public Location getBestLocation();
-
     public static class ReputationDetails {
     	
     	public ReputationDetails() {

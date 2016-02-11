@@ -53,9 +53,7 @@ public class ExampleUtils {
         simpleLine( indent, "Is Prepaid:                  %s", phone.getPrepaid()            );
         simpleLine( indent, "Reputation:                  %s", getSpamScore( phone )         );
         simpleLine( indent, "Is Valid:                    %s", phone.getValid()              );
-
-        bestLocation( phone.getBestLocation(), depth, indent );
-
+        
         dumpBaseEntity( phone, depth, indent );
     }
 

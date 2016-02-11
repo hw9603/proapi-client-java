@@ -83,11 +83,6 @@ public class PhoneProAPI20JSONStreamResponseDecoderTest {
     }
 
     @Test
-    public void hasBestLocationAssociation() {
-        assertThat(phone.getBestLocationAssociation().getEntityId(), is(EntityId.fromString("Location.0a48926c-b02c-468e-ba80-18cc77dfa3fc.Durable")));
-    }
-
-    @Test
     public void hasLineType() {
         assertThat(phone.getLineType(), is(Phone.LineType.TOLL_FREE));
     }
