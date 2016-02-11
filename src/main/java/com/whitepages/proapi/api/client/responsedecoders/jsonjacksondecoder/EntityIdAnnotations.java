@@ -11,8 +11,7 @@ import java.util.UUID;
 class EntityIdAnnotations {
 
     EntityIdAnnotations(@JsonProperty("type") EntityId.EntityType type,
-                        @JsonProperty("uuid") UUID uuid,
-                        @JsonProperty("durability") EntityId.Durability durability) {
+                        @JsonProperty("uuid") UUID uuid) {
 
     }
 
