@@ -12,7 +12,6 @@ public class PersonNameAnnotations {
                           @JsonProperty("first_name") String firstName,
                           @JsonProperty("middle_name") String middleName,
                           @JsonProperty("last_name") String lastName,
-                          @JsonProperty("suffix") String suffix,
-                          @JsonProperty("valid_for") TimePeriod validFor) {}
+                          @JsonProperty("suffix") String suffix) {}
 
 }
