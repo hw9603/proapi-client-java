@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class PersonImpl extends EntityImpl implements Person {
 
-    private PersonType type;
     private List<Name> names;
     private AgeRange ageRange;
     private Gender gender;
@@ -23,14 +22,6 @@ public class PersonImpl extends EntityImpl implements Person {
 
     public PersonImpl(EntityId id) {
         super(id);
-    }
-
-    public PersonType getType() {
-        return type;
-    }
-
-    public void setType(PersonType type) {
-        this.type = type;
     }
 
     public List<Name> getNames() {

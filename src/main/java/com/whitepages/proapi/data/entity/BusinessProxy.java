@@ -20,7 +20,7 @@ public class BusinessProxy extends EntityProxy implements Business {
     public BusinessProxy(EntityId entityId, Client client) {
         super(entityId, client);
     }
-
+    
     @Override
     protected Entity getEntity() {
         return business;

@@ -29,11 +29,6 @@ public class LocationProAPI20JSONStreamResponseDecoderTest {
     }
 
     @Test
-    public void hasAddress() {
-        assertThat(location.getAddress(), is("1301 5th Ave Ste 1600, Seattle WA 98101-2625"));
-    }
-
-    @Test
     public void hasNoLocationAssociations() {
         assertThat(location.getLocationAssociations(), is(nullValue()));
     }

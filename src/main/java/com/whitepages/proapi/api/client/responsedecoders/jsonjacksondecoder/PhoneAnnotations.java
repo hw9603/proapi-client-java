@@ -45,6 +45,9 @@ abstract class PhoneAnnotations extends EntityAnnotations {
     @JsonProperty("is_valid")
     abstract Boolean getValid();
 
+    @JsonProperty("is_connected")
+    abstract Boolean getConnected();
+    
     @JsonProperty("best_location")
     abstract LocationAssociation getBestLocationAssociation();
 

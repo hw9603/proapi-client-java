@@ -38,11 +38,6 @@ public class PersonProxy extends EntityProxy implements Person {
     }
 
     @Override
-    public PersonType getType() {
-        return (person == null) ? null : person.getType();
-    }
-
-    @Override
     public List<Name> getNames() {
         return (person == null) ? null : person.getNames();
     }
@@ -55,20 +50,5 @@ public class PersonProxy extends EntityProxy implements Person {
     @Override
     public Gender getGender() {
         return (person == null) ? null : person.getGender();
-    }
-
-    @Override
-    public String getBestName() {
-        return (person == null) ? null : person.getBestName();
-    }
-
-    @Override
-    public LocationAssociation getBestLocationAssociation() {
-        return (person == null) ? null : person.getBestLocationAssociation();
-    }
-
-    @Override
-    public Location getBestLocation() {
-        return (person == null) ? null : person.getBestLocation();
     }
 }

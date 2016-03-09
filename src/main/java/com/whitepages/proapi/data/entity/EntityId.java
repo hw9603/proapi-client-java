@@ -45,45 +45,13 @@ public class EntityId {
             return e;
         }
     }
-
-    public enum Durability {
-        DURABLE,
-        EPHEMERAL,
-        TEMPORARY;
-
-        private static Map<String, Durability> namesMap = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-
-        static {
-            namesMap.put("Durable", DURABLE);
-            namesMap.put("Ephemeral", EPHEMERAL);
-            namesMap.put("Temporary", TEMPORARY);
-        }
-
-        @Override
-        public String toString() {
-            for (Map.Entry<String, Durability> entry : namesMap.entrySet()) {
-                if (entry.getValue() == this)
-                    return entry.getKey();
-            }
-            return null;
-        }
-
-        public static Durability forValue(String value) {
-            Durability d = namesMap.get(value);
-            if (d == null)
-                throw new IllegalArgumentException(String.format("Invalid enum string. Got %s, expected ", value, namesMap.keySet()));
-            return d;
-        }
-    }
-
+ 
     private EntityType type;
     private UUID uuid;
-    private Durability durability;
 
-    public EntityId(EntityType type, UUID uuid, Durability durability) {
+    public EntityId(EntityType type, UUID uuid) {
         this.type = type;
         this.uuid = uuid;
-        this.durability = durability;
     }
 
     private static IllegalArgumentException invalidEntityIdStringException =
@@ -96,12 +64,11 @@ public class EntityId {
 
         EntityType type = EntityType.valueOf(idPieces[0].toUpperCase());
         UUID uuid = UUID.fromString(idPieces[1]);
-        Durability durability = Durability.valueOf(idPieces[2].toUpperCase());
-
-        if (type == null || uuid == null || durability == null)
+        
+        if (type == null || uuid == null)
             throw invalidEntityIdStringException;
 
-        return new EntityId(type, uuid, durability);
+        return new EntityId(type, uuid);
     }
 
     public EntityType getType() {
@@ -118,14 +85,6 @@ public class EntityId {
 
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
-    }
-
-    public Durability getDurability() {
-        return durability;
-    }
-
-    public void setDurability(Durability durability) {
-        this.durability = durability;
     }
 
     @Override
@@ -151,6 +110,6 @@ public class EntityId {
     @Override
     public String toString() {
         //TODO: Capitalize correctly to match API.
-        return String.format("%s.%s.%s", type, uuid, durability);
+        return String.format("%s.%s", type, uuid);
     }
 }

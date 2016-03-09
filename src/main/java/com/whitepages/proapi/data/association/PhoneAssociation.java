@@ -16,25 +16,14 @@ import java.util.Date;
  * @see com.whitepages.proapi.data.entity.Phone
  * @see com.whitepages.proapi.data.association.Association
  */
-public class PhoneAssociation extends Association implements ContactTyped {
-
-    private ContactType contactType;
+public class PhoneAssociation extends Association implements HistoricalAssociation {
 
     public PhoneAssociation(EntityId entityId, ResponseDictionary responseDictionary) {
         super(entityId, responseDictionary);
     }
 
-    public PhoneAssociation(EntityId entityId, ResponseDictionary dictionary, TimePeriod validFor, Boolean historical, Date contactCreationDate, ContactType contactType) {
+    public PhoneAssociation(EntityId entityId, ResponseDictionary dictionary, TimePeriod validFor, Boolean historical, Date contactCreationDate) {
         super(entityId, dictionary, validFor, historical, contactCreationDate);
-        this.contactType = contactType;
-    }
-
-    public ContactType getContactType() {
-        return contactType;
-    }
-
-    public void setContactType(ContactType contactType) {
-        this.contactType = contactType;
     }
 
     public Phone getPhone() {
@@ -50,4 +39,25 @@ public class PhoneAssociation extends Association implements ContactTyped {
     public EntityId.EntityType getEntityIdType() {
         return EntityId.EntityType.PHONE;
     }
+    
+    @Override
+    public TimePeriod getValidFor() {
+        return super.getValidFor();
+    }
+
+    @Override
+    public void setValidFor(TimePeriod validFor) {
+        super.setValidFor(validFor);
+    }
+
+    @Override
+    public Boolean getHistorical() {
+        return super.getHistorical();
+    }
+
+    @Override
+    public void setHistorical(Boolean historical) {
+        super.setHistorical(historical);
+    }
+
 }

@@ -29,7 +29,7 @@ public class LocationAssociationTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void entityIdTypeContraint() {
-        EntityId id = new EntityId(EntityId.EntityType.BUSINESS, UUID.randomUUID(), EntityId.Durability.DURABLE);
+        EntityId id = new EntityId(EntityId.EntityType.BUSINESS, UUID.randomUUID());
         new LocationAssociation(id, new ResponseDictionary(null));
     }
 

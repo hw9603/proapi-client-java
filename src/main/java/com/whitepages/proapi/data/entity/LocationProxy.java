@@ -43,11 +43,6 @@ public class LocationProxy extends EntityProxy implements Location {
     }
 
     @Override
-    public String getAddress() {
-        return (location == null) ? null : location.getAddress();
-    }
-
-    @Override
     public String getStandardAddressLine1() {
         return (location == null) ? null : location.getStandardAddressLine1();
     }
@@ -55,11 +50,6 @@ public class LocationProxy extends EntityProxy implements Location {
     @Override
     public String getStandardAddressLine2() {
         return (location == null) ? null : location.getStandardAddressLine2();
-    }
-
-    @Override
-    public String getStandardAddressLocation() {
-        return (location == null) ? null : location.getStandardAddressLocation();
     }
 
     @Override
@@ -83,48 +73,8 @@ public class LocationProxy extends EntityProxy implements Location {
     }
 
     @Override
-    public String getAptType() {
-        return (location == null) ? null : location.getAptType();
-    }
-
-    @Override
     public String getZip4() {
         return (location == null) ? null : location.getZip4();
-    }
-
-    @Override
-    public String getHouse() {
-        return (location == null) ? null : location.getHouse();
-    }
-
-    @Override
-    public String getStreetName() {
-        return (location == null) ? null : location.getStreetName();
-    }
-
-    @Override
-    public String getStreetType() {
-        return (location == null) ? null : location.getStreetType();
-    }
-
-    @Override
-    public String getPreDir() {
-        return (location == null) ? null : location.getPreDir();
-    }
-
-    @Override
-    public String getPostDir() {
-        return (location == null) ? null : location.getPostDir();
-    }
-
-    @Override
-    public String getAptNumber() {
-        return (location == null) ? null : location.getAptNumber();
-    }
-
-    @Override
-    public String getBoxNumber() {
-        return (location == null) ? null : location.getBoxNumber();
     }
 
     @Override
@@ -150,11 +100,6 @@ public class LocationProxy extends EntityProxy implements Location {
     @Override
     public DeliveryPoint getDeliveryPoint() {
         return (location == null) ? null : location.getDeliveryPoint();
-    }
-
-    @Override
-    public BoxType getBoxType() {
-        return (location == null) ? null : location.getBoxType();
     }
 
     @Override

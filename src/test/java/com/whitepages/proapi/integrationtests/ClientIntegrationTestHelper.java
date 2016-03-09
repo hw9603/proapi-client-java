@@ -12,7 +12,7 @@ public class ClientIntegrationTestHelper {
     private static final String apiKey;
 
     static {
-        File file = new File(ClientIntegrationTestHelper.class.getResource("/api_key.txt").getFile());
+        File file = new File(ClientIntegrationTestHelper.class.getResource("api_key.txt").getFile());
         String key;
         try {
             key = new Scanner(file).useDelimiter("\n").next();

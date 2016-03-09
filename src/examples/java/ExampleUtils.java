@@ -53,49 +53,34 @@ public class ExampleUtils {
         simpleLine( indent, "Is Prepaid:                  %s", phone.getPrepaid()            );
         simpleLine( indent, "Reputation:                  %s", getSpamScore( phone )         );
         simpleLine( indent, "Is Valid:                    %s", phone.getValid()              );
-
-        bestLocation( phone.getBestLocation(), depth, indent );
-
+        
         dumpBaseEntity( phone, depth, indent );
     }
 
     private static void dumpPerson( Person person, int depth, int indent ) {
         printName( person, indent );
         
-        simpleLine( indent, "Best Name:                   %s", person.getBestName()              );
         simpleLine( indent, "Names:                       %s", person.getNames()                 );
         simpleLine( indent, "Age Range:                   %s", person.getAgeRange()              );
         simpleLine( indent, "Gender:                      %s", person.getGender()                );
-        simpleLine( indent, "Type:                        %s", person.getType()                  );
-
-        bestLocation( person.getBestLocation(), depth, indent );
 
         dumpBaseEntity( person, depth, indent );
     }
 
     private static void dumpLocation( Location location, int depth, int indent ) {
         printName( location, indent );
-        simpleLine( indent, "Address:                     %s", location.getAddress()                 );
         simpleLine( indent, "Address Type:                %s", location.getAddressType()             );
-        simpleLine( indent, "Apartment Number:            %s", location.getAptNumber()               );
-        simpleLine( indent, "Box Number:                  %s", location.getBoxNumber()               );
         simpleLine( indent, "City:                        %s", location.getCity()                    );
         simpleLine( indent, "CountryCode:                 %s", location.getCountryCode()             );
         simpleLine( indent, "Deliverable:                 %s", location.getDeliverable()             );
         simpleLine( indent, "Delivery Point:              %s", location.getDeliveryPoint()           );
-        simpleLine( indent, "House:                       %s", location.getHouse()                   );
         simpleLine( indent, "Latitude/Longitude:          %s", stringify( location.getLatLong() )    );
         simpleLine( indent, "Not Receiving Mail Reason:   %s", location.getNotReceivingMailReason()  );
         simpleLine( indent, "Postal Code:                 %s", location.getPostalCode()              );
-        simpleLine( indent, "Post Directional:            %s", location.getPostDir()                 );
-        simpleLine( indent, "Pre Directional:             %s", location.getPreDir()                  );
         simpleLine( indent, "Receiving Mail:              %s", location.getReceivingMail()           );
         simpleLine( indent, "Standard Address Line1:      %s", location.getStandardAddressLine1()    );
         simpleLine( indent, "Standard Address Line2:      %s", location.getStandardAddressLine2()    );
-        simpleLine( indent, "Standard Address Location:   %s", location.getStandardAddressLocation() );
         simpleLine( indent, "State Code:                  %s", location.getStateCode()               );
-        simpleLine( indent, "Street Name:                 %s", location.getStreetName()              );
-        simpleLine( indent, "Street Type:                 %s", location.getStreetType()              );
         simpleLine( indent, "Usage:                       %s", location.getUsage()                   );
         simpleLine( indent, "ValidFor:                    %s", stringify( location.getValidFor() )   );
         simpleLine( indent, "Zip4:                        %s", location.getZip4()                    );
@@ -161,7 +146,6 @@ public class ExampleUtils {
     }
 
     private static void dumpLocationAssociation( LocationAssociation association, int depth, int indent ) {
-        simpleLine( indent, "Contact Type:                %s", association.getContactType() );
         simpleLine( indent, "Location:" );
         dumpLocation( association.getLocation(), depth, indent + _INDENT );
     }
@@ -171,7 +155,6 @@ public class ExampleUtils {
     }
 
     private static void dumpPhoneAssociation( PhoneAssociation association, int depth, int indent ) {
-        simpleLine( indent, "Contact Type:                %s", association.getContactType() );
         simpleLine( indent, "Phone:" );
         dumpPhone( association.getPhone(), depth, indent + _INDENT );
         

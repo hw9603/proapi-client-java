@@ -45,7 +45,7 @@ public class PersonLookupTest extends EntityLookupTest<Person> {
         if (response != null && response.isSuccess()) {
             List<Person> results = response.getResults();
             for (Person p : results) {
-                System.out.println(p.getBestName());
+                System.out.println(p.getName());
             }
         }
     }

@@ -192,7 +192,14 @@
    "carrier":null,
    "do_not_call":false,
    "reputation":{
-    "spam_score":0
+    "level":1,
+    "spam_score":0,
+    "details":[
+     {
+      "score":2,
+      "type":"NotApplicable",
+      "category":"NotApplicable"
+     }]
    },
    "is_prepaid":null,
    "best_location":{

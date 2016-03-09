@@ -13,7 +13,7 @@ import java.util.Date;
  * @see com.whitepages.proapi.data.entity.Business
  * @see com.whitepages.proapi.data.association.Association
  */
-public class BusinessAssociation extends LegalEntityAssociation {
+public class BusinessAssociation extends LegalEntityAssociation implements HistoricalAssociation {
 
     public BusinessAssociation(EntityId entityId, ResponseDictionary responseDictionary) {
         super(entityId, responseDictionary);
@@ -35,6 +35,26 @@ public class BusinessAssociation extends LegalEntityAssociation {
     @Override
     public EntityId.EntityType getEntityIdType() {
         return EntityId.EntityType.BUSINESS;
+    }
+
+    @Override
+    public TimePeriod getValidFor() {
+        return super.getValidFor();
+    }
+
+    @Override
+    public void setValidFor(TimePeriod validFor) {
+        super.setValidFor(validFor);
+    }
+
+    @Override
+    public Boolean getHistorical() {
+        return super.getHistorical();
+    }
+
+    @Override
+    public void setHistorical(Boolean historical) {
+        super.setHistorical(historical);
     }
 
 }

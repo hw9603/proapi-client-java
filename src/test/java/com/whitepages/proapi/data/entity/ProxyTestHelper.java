@@ -21,10 +21,10 @@ public class ProxyTestHelper {
 
     static final String apiKey = "mockapikey";
 
-    static final EntityId personId = new EntityId(EntityId.EntityType.PERSON, UUID.randomUUID(), EntityId.Durability.DURABLE);
-    static final EntityId businessId = new EntityId(EntityId.EntityType.BUSINESS, UUID.randomUUID(), EntityId.Durability.DURABLE);
-    static final EntityId phoneId = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID(), EntityId.Durability.DURABLE);
-    static final EntityId locationId = new EntityId(EntityId.EntityType.LOCATION, UUID.randomUUID(), EntityId.Durability.DURABLE);
+    static final EntityId personId = new EntityId(EntityId.EntityType.PERSON, UUID.randomUUID());
+    static final EntityId businessId = new EntityId(EntityId.EntityType.BUSINESS, UUID.randomUUID());
+    static final EntityId phoneId = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID());
+    static final EntityId locationId = new EntityId(EntityId.EntityType.LOCATION, UUID.randomUUID());
 
     private static final Person person;
     private static final Business business;

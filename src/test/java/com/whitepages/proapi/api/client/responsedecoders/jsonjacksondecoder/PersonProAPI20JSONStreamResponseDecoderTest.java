@@ -2,7 +2,6 @@ package com.whitepages.proapi.api.client.responsedecoders.jsonjacksondecoder;
 
 import com.whitepages.proapi.api.client.ResponseDecoderException;
 import com.whitepages.proapi.api.response.Response;
-import com.whitepages.proapi.data.association.ContactTyped;
 import com.whitepages.proapi.data.association.LocationAssociation;
 import com.whitepages.proapi.data.entity.EntityId;
 import com.whitepages.proapi.data.entity.Person;
@@ -35,11 +34,6 @@ public class PersonProAPI20JSONStreamResponseDecoderTest {
     @Test
     public void hasResults() {
         assertThat(response.getResults().size(), is(23));
-    }
-
-    @Test
-    public void hasBestName() {
-        assertThat(person.getBestName(), is("Jane A Smith"));
     }
 
     @Test
@@ -85,11 +79,6 @@ public class PersonProAPI20JSONStreamResponseDecoderTest {
     }
 
     @Test
-    public void hasBestLocationAssociation() {
-        assertThat(person.getBestLocationAssociation().getEntityId(), is(EntityId.fromString("Location.5c14f9d6-56ad-4e72-ab86-966a1f4b58ec.Durable")));
-    }
-
-    @Test
     public void hasExcpectedHitoricalAssociationsForAttributeTests() {
         assertThat(association.getEntityId(), is(EntityId.fromString("Location.cf41eb5e-b4c4-4c16-90fb-4bbbe688f06e.Durable")));
     }
@@ -98,12 +87,7 @@ public class PersonProAPI20JSONStreamResponseDecoderTest {
     public void hasCorrecHistoricalAssociationAttribute() {
         assertThat(association.getHistorical(), is(true));
     }
-
-    @Test
-    public void hasCorrectContactTypeAssociationAttribute() {
-        assertThat(association.getContactType(), is(ContactTyped.ContactType.HOME));
-    }
-
+    
     @Test
     public void hasCorrectValidForAssociationAttributes() {
         assertThat(association.getValidFor(), is(notNullValue()));

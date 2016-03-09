@@ -1,5 +1,7 @@
 package com.whitepages.proapi.data.entity;
 
+import java.util.List;
+
 /**
  * The standard concrete implementation of the {@link Business} {@link Entity}.
  * @see com.whitepages.proapi.data.entity.Business
@@ -22,4 +24,5 @@ public class BusinessImpl extends EntityImpl implements Business {
     public String getName() {
         return this.name;
     }
+    
 }

@@ -83,12 +83,7 @@ public class PhoneProxy extends EntityProxy implements Phone {
     }
 
     @Override
-    public LocationAssociation getBestLocationAssociation() {
-        return (phone == null) ? null : phone.getBestLocationAssociation();
-    }
-
-    @Override
-    public Location getBestLocation() {
-        return (phone == null) ? null : phone.getBestLocation();
-    }
+    public Boolean getConnected() {
+    	return (phone == null) ? null : phone.getConnected();
+    }    
 }

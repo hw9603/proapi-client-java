@@ -24,8 +24,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class EntityImplTest {
 
-    private static final EntityId entityId = new EntityId(EntityId.EntityType.PERSON, UUID.randomUUID(), EntityId.Durability.DURABLE);
-    private static final EntityId associatedPhoneId = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID(), EntityId.Durability.DURABLE);
+    private static final EntityId entityId = new EntityId(EntityId.EntityType.PERSON, UUID.randomUUID());
+    private static final EntityId associatedPhoneId = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID());
 
     private EntityImpl entity;
     private Phone associatedPhone;
