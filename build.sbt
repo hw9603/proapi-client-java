@@ -4,7 +4,7 @@ name := "proapi-client"
 
 organization := "com.whitepages"
 
-version := "1.0.1"
+version := "1.0.3"
 
 description := "Whitepages PROAPI Client Library for Java"
 
