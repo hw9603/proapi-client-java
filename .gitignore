@@ -29,4 +29,4 @@ proapi-client-java-javadoc.zip
 bin/
 
 # temporary Emacs files
-#*
+\#*
