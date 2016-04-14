@@ -59,14 +59,6 @@ public class LocationImpl extends EntityImpl implements Location {
         this.type = type;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getStandardAddressLine1() {
         return standardAddressLine1;
     }
@@ -260,7 +252,7 @@ public class LocationImpl extends EntityImpl implements Location {
     }
 
     public String getName() {
-        return address;
+        return this.standardAddressLine1 + ' ' + this.standardAddressLine2 + ' ' + this.city + ' ' + this.stateCode + ' ' + this.postalCode;
     }
 
 }

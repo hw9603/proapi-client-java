@@ -1,6 +1,11 @@
 package com.whitepages.proapi.api.client;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.util.Date;
+import java.util.Properties;
 
 /**
  * <p>The configuration data class.</p>
@@ -22,10 +27,11 @@ public class Config {
 
     private String apiKey;
     private URI serviceRoot;
-
+    
     /**
      * Creates a mutable configuration object.
      * @param apiKey The Whitepages API Key associated with your PRO account.
+     * @throws IOException 
      */
     public Config(String apiKey) {
         this.apiKey = apiKey;
@@ -47,5 +53,5 @@ public class Config {
     public void setServiceRoot(URI serviceRoot) {
         this.serviceRoot = serviceRoot;
     }
-
+    
 }

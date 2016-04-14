@@ -3,6 +3,7 @@ package com.whitepages.proapi.api.client.datasources;
 import com.whitepages.proapi.api.client.Client;
 import com.whitepages.proapi.api.client.DataSource;
 import com.whitepages.proapi.api.client.DataSourceException;
+import com.whitepages.proapi.api.client.Props;
 import com.whitepages.proapi.api.client.util.HttpResponse;
 
 import java.io.IOException;
@@ -19,9 +20,17 @@ import java.util.Map;
 public class HttpDataSource implements DataSource<URI, HttpResponse> {
     @Override
     public HttpResponse execute(URI uri, Client client) throws DataSourceException {
+    	int defaultConnectTimeout = this.getDefaultConnectTimeout();
+    	int defaultReadTimeout = this.getDefaultReadTimeout();
+        return this.execute(uri, client, defaultConnectTimeout, defaultReadTimeout);
+    }
+    
+    public HttpResponse execute(URI uri, Client client, int connectTimeout, int readTimeout) throws DataSourceException {
         try {
             URL url = uri.toURL();
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(connectTimeout);
+            conn.setReadTimeout(readTimeout);
             conn.setRequestMethod("GET");
 
             int responseCode = conn.getResponseCode();
@@ -32,5 +41,13 @@ public class HttpDataSource implements DataSource<URI, HttpResponse> {
         } catch (IOException e) {
             throw new DataSourceException(e);
         }
+    }
+    
+    private int getDefaultConnectTimeout() {
+    	return Props.getDefaultConnectTimeout();
+    }
+    
+    private int getDefaultReadTimeout() {
+    	return Props.getDefaultReadTimeout();
     }
 }

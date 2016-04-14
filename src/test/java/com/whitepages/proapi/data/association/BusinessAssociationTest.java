@@ -29,7 +29,7 @@ public class BusinessAssociationTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void entityIdTypeContraint() {
-        EntityId id = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID());
+        EntityId id = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID().toString());
         new BusinessAssociation(id, new ResponseDictionary(null));
     }
 

@@ -119,7 +119,20 @@ public class Client {
     public Response<Person> findPeople(PersonQuery query) throws FindException {
         return personResultFinder.find(query, this);
     }
-
+    
+    /**
+     * Executes the given query and returns the response.
+     * @param query The query to perform.
+     * @param connectTimeout the number of milliseconds to wait until a connection attempt times out
+     * @param readTimeout the number of milliseconds to wait until a read attempt times out
+     * @return The Response object.
+     * @throws FindException Thrown if an exception occurs before a Response object could be created.
+     */
+    public Response<Person> findPeople(PersonQuery query, int connectTimeout, int readTimeout) throws FindException {
+        return personResultFinder.find(query, this, connectTimeout, readTimeout);
+    }
+    
+    
     /**
      * Executes the given query and returns the response.
      * @param query The query to perform.
@@ -128,6 +141,18 @@ public class Client {
      */
     public Response<Business> findBusinesses(BusinessQuery query) throws FindException {
         return businessResultFinder.find(query, this);
+    }
+    
+    /**
+     * Executes the given query and returns the response.
+     * @param query The query to perform.
+     * @param connectTimeout the number of milliseconds to wait until a connection attempt times out
+     * @param readTimeout the number of milliseconds to wait until a read attempt times out
+     * @return The Response object.
+     * @throws FindException Thrown if an exception occurs before a Response object could be created.
+     */
+    public Response<Business> findBusinesses(BusinessQuery query, int connectTimeout, int readTimeout) throws FindException {
+        return businessResultFinder.find(query, this, connectTimeout, readTimeout);
     }
 
     /**
@@ -139,6 +164,18 @@ public class Client {
     public Response<Phone> findPhones(PhoneQuery query) throws FindException {
         return phoneResultFinder.find(query, this);
     }
+    
+    /**
+     * Executes the given query and returns the response.
+     * @param query The query to perform.
+     * @param connectTimeout the number of milliseconds to wait until a connection attempt times out
+     * @param readTimeout the number of milliseconds to wait until a read attempt times out
+     * @return The Response object.
+     * @throws FindException Thrown if an exception occurs before a Response object could be created.
+     */
+    public Response<Phone> findPhones(PhoneQuery query, int connectTimeout, int readTimeout) throws FindException {
+        return phoneResultFinder.find(query, this, connectTimeout, readTimeout);
+    }
 
     /**
      * Executes the given query and returns the response.
@@ -148,5 +185,17 @@ public class Client {
      */
     public Response<Location> findLocations(LocationQuery query) throws FindException {
         return locationResultFinder.find(query, this);
+    }
+    
+    /**
+     * Executes the given query and returns the response.
+     * @param query The query to perform.
+     * @param connectTimeout the number of milliseconds to wait until a connection attempt times out
+     * @param readTimeout the number of milliseconds to wait until a read attempt times out
+     * @return The Response object.
+     * @throws FindException Thrown if an exception occurs before a Response object could be created.
+     */
+    public Response<Location> findLocations(LocationQuery query, int connectTimeout, int readTimeout) throws FindException {
+        return locationResultFinder.find(query, this, connectTimeout, readTimeout);
     }
 }

@@ -1,5 +1,7 @@
 package com.whitepages.proapi.api.client.responsedecoders.jsonjacksondecoder;
 
+import java.io.InputStream;
+
 import com.whitepages.proapi.api.client.Client;
 import com.whitepages.proapi.api.client.Config;
 import com.whitepages.proapi.api.client.util.HttpResponse;
@@ -40,7 +42,10 @@ public class ResponseDecoderHelper {
 
     private Response<Business> decodeBusinessResponse() {
         try {
-            return new BusinessProAPI20JSONStreamResponseDecoder().decode(readFile("/jsonresponses/businessResponse.json"), client);
+        	HttpResponse fileResponse = readFile("/jsonresponses/businessResponse.json");
+        	BusinessProAPI20JSONStreamResponseDecoder decoder = new BusinessProAPI20JSONStreamResponseDecoder();
+        	Response<Business> response = decoder.decode(fileResponse, client);
+        	return response;
         } catch(Exception e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +76,9 @@ public class ResponseDecoderHelper {
     }
 
     private HttpResponse readFile(String fileName) {
-        return new HttpResponse(200, null, null, getClass().getResourceAsStream(fileName));
+    	Class<? extends ResponseDecoderHelper> c = this.getClass();
+    	InputStream stream = c.getResourceAsStream(fileName);
+        return new HttpResponse(200, null, null, stream);
     }
 
 }
