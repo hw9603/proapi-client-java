@@ -1,5 +1,7 @@
 package com.whitepages.proapi.api.client.responsedecoders.jsonjacksondecoder;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.whitepages.proapi.data.entity.Phone;
@@ -9,14 +11,16 @@ import com.whitepages.proapi.data.entity.Phone;
  */
 abstract class PhoneReputationAnnotations {
 
-    @JsonCreator
-    PhoneReputationAnnotations(@JsonProperty("level") int level,
-								@JsonProperty("spam_score") int spamScore,
-								@JsonProperty("spam_index") int spamIndex,
-								@JsonProperty("volume_score") int volumeScore,
-								@JsonProperty("report_count") int reportCount){};
-								
-	@JsonProperty("details") 
-	abstract Phone.ReputationDetails getDetails();
+	@JsonProperty("level")
+	abstract int getLevel();
+
+	@JsonProperty("volume_score")
+	abstract int getVolumeScore();
+
+	@JsonProperty("report_count")
+	abstract int getReportCount();
+
+	@JsonProperty("details")
+	abstract List<Phone.ReputationDetails> getDetails();
 
 }

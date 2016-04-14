@@ -93,7 +93,7 @@ public class PhoneProAPI20JSONStreamResponseDecoderTest {
     }
 
     @Test
-    public void hasSpamScore() {
-        assertThat(phone.getReputation().getSpamScore(), is(0));
+    public void hasLevel() {
+        assertThat(phone.getReputation().getLevel(), is(1));
     }
 }
