@@ -234,29 +234,31 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
         @Override
         public TimePeriod deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
             JsonNode root = mapper.readTree(jp);
-            Calendar calendar = Calendar.getInstance();
-            calendar.clear();
 
             Date start = null;
             Date end = null;
 
-            if (!root.path("start").isMissingNode()) {
-                calendar.set(Calendar.YEAR, root.path("start").path("year").intValue());
-                calendar.set(Calendar.MONTH, root.path("start").path("month").intValue() - 1);
-                calendar.set(Calendar.DAY_OF_MONTH, root.path("start").path("day").intValue());
-                start = calendar.getTime();
+            JsonNode startNode = root.path("start");
+            if (!startNode.isNull() && !startNode.isMissingNode()) {
+                start = extractDateFromJsonNode(startNode);
             }
 
-            if (!root.path("stop").isMissingNode()) {
-                calendar.set(Calendar.YEAR, root.path("stop").path("year").intValue());
-                calendar.set(Calendar.MONTH, root.path("stop").path("month").intValue() - 1);
-                calendar.set(Calendar.DAY_OF_MONTH, root.path("stop").path("day").intValue());
-                end = calendar.getTime();
+            JsonNode stopNode = root.path("stop");
+            if (!stopNode.isNull() && !stopNode.isMissingNode()) {
+                end = extractDateFromJsonNode(stopNode);
             }
 
             return new TimePeriod(start, end);
         }
 
+        private static Date extractDateFromJsonNode(JsonNode node) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.clear();
+            calendar.set(Calendar.YEAR, node.path("year").intValue());
+            calendar.set(Calendar.MONTH, node.path("month").intValue() - 1);
+            calendar.set(Calendar.DAY_OF_MONTH, node.path("day").intValue());
+            return calendar.getTime();
+        }
     }
 
     static class UnixTimestampDeserializer extends JsonDeserializer<Date> {
