@@ -80,6 +80,7 @@ public class Response<T extends Entity> {
 
     /**
      * Returns true if the query failed.
+     * @return true if not successful, otherwise false
      * @see #isSuccess
      */
     public boolean isFailure() {
@@ -88,6 +89,7 @@ public class Response<T extends Entity> {
 
     /**
      * Returns true if the query succeeded.
+     * @return true if successful, otherwise false
      * @see #isFailure
      */
     public boolean isSuccess() {

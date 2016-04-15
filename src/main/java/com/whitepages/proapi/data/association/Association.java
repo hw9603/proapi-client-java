@@ -16,7 +16,7 @@ import java.util.Date;
  *     <li>Each node is an {@link Entity}, and</li>
  *     <li>Each edge is an {@link Association}.</li>
  * </ul>
- * <p></p>Entities contain data intrinsic to the entity, whereas associations
+ * <p>Entities contain data intrinsic to the entity, whereas associations
  * contain data pertaining to the relationship between its source and destination
  * entities</p>
  *
@@ -57,19 +57,20 @@ public abstract class Association {
 
     /**
      * Returns the ID of the associated entity.
+     * @return the EntityId instance of the associated entity
      */
     public EntityId getEntityId() {
         return entityId;
     }
     /**
-     * <p></p>Returns the associated entity in a way that is generic across all
+     * <p>Returns the associated entity in a way that is generic across all
      * Association types; for strongly typed accessors, see
      * {@link PersonAssociation#getPerson()},
      * {@link BusinessAssociation#getBusiness()},
      * {@link PhoneAssociation#getPhone()}, and
      * {@link LocationAssociation#getLocation()}.</p>
      *
-     * @return
+     * @return an Entity instance
      *
      * @see com.whitepages.proapi.data.association.PersonAssociation#getPerson()
      * @see com.whitepages.proapi.data.association.BusinessAssociation#getBusiness()
