@@ -31,7 +31,6 @@ public class Config {
     /**
      * Creates a mutable configuration object.
      * @param apiKey The Whitepages API Key associated with your PRO account.
-     * @throws IOException 
      */
     public Config(String apiKey) {
         this.apiKey = apiKey;

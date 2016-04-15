@@ -18,7 +18,7 @@ import java.util.List;
  *     <li>Each node is an {@link Entity}, and</li>
  *     <li>each Edge is an {@link Association}.</li>
  * </ul>
- * <p></p>Entities contain data intrinsic to the entity, whereas associations
+ * <p>Entities contain data intrinsic to the entity, whereas associations
  * contain data pertaining to the relationship between its source and destination
  * entities</p>
  *

@@ -8,7 +8,7 @@ import com.whitepages.proapi.api.response.Response;
 import com.whitepages.proapi.data.entity.*;
 
 /**
- * <p></p>A factory for creation of {@link ResultFinder} instances.</p>
+ * <p>A factory for creation of {@link ResultFinder} instances.</p>
  *
  * <p>ResultFinders require choosing a compatible set of {@link QueryCoder}, {@link DataSource}, and
  * {@link ResponseDecoder} instances in order to function. This factory supplies factory methods for the

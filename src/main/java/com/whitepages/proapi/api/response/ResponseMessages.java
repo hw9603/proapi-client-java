@@ -26,10 +26,10 @@ public class ResponseMessages {
      * <p>Accessor for retrieving the list of messages.</p>
      *
      * <p>One should prefer using methods on the ResponseMessages object,
-     * when availabile. For example, rather than calling<br/>
-     * {@code response.getResponseMessages().getMessageList().get(0)},<br/>
-     * one should call<br/>
-     * {@code response.getResponseMessages().get(0)}.</p>
+     * when available. For example, rather than calling
+     * <p>* {@code response.getResponseMessages().getMessageList().get(0)},</p>
+     * <p>* one should call</p>
+     * <p>* {@code response.getResponseMessages().get(0)}.</p>
      *
      * @return The messages in this collection as a List.
      */
