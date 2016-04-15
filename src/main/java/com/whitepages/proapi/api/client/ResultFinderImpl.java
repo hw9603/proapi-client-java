@@ -29,4 +29,11 @@ public class ResultFinderImpl<Q extends Query, R extends Response<? extends Enti
         V responseData = dataSource.execute(queryData, client);
         return responseDecoder.decode(responseData, client);
     }
+    
+    @Override
+    public R find(Q query, Client client, int connectTimeout, int readTimeout) throws FindException {
+        U queryData = queryCoder.encode(query, client);
+        V responseData = dataSource.execute(queryData, client, connectTimeout, readTimeout);
+        return responseDecoder.decode(responseData, client);
+    }
 }

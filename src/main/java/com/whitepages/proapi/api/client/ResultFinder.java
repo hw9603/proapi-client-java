@@ -31,4 +31,6 @@ public interface ResultFinder<Q extends Query, R extends Response<? extends Enti
      * @throws FindException The wrapper class for any exceptions that may occur before a Response can be created and returned.
      */
     public R find(Q query, Client client) throws FindException;
+    
+    public R find(Q query, Client client, int connectTimeout, int readTimeout) throws FindException;
 }

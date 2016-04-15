@@ -33,4 +33,6 @@ public interface DataSource<U, V> {
      * @throws DataSourceException The wrapper error for any errors encountered while attempting to retrieve data.
      */
     public V execute(U u, Client client) throws DataSourceException;
+    
+    public V execute(U u, Client client, int connectTimeout, int readTimeout) throws DataSourceException;
 }

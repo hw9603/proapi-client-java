@@ -1,5 +1,6 @@
 package com.whitepages.proapi.api.client.responsedecoders.jsonjacksondecoder;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.whitepages.proapi.api.client.Client;
 import com.whitepages.proapi.api.client.ResponseDecoder;
@@ -9,6 +10,7 @@ import com.whitepages.proapi.api.response.Response;
 import com.whitepages.proapi.data.entity.Business;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
@@ -22,7 +24,9 @@ public class BusinessProAPI20JSONStreamResponseDecoder extends ProAPI20JSONStrea
         Response<Business> businessResponse;
         try {
             ObjectMapper mapper = getDeserializer(client);
-            ResponseDeserializer deserializer = new ResponseDeserializer(mapper.readTree(responseData.getBody()), mapper, client);
+            InputStream body = responseData.getBody();
+            JsonNode tree = mapper.readTree(body);
+            ResponseDeserializer deserializer = new ResponseDeserializer(tree, mapper, client);
 
             if(responseData.getResponseCode() == HTTP_OK) {
                 businessResponse = deserializer.deserializeBusinessResponse();

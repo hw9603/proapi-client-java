@@ -47,15 +47,7 @@ public class PersonImpl extends EntityImpl implements Person {
     public void setGender(Gender gender) {
         this.gender = gender;
     }
-
-    public String getBestName() {
-        return bestName;
-    }
-
-    public void setBestName(String bestName) {
-        this.bestName = bestName;
-    }
-
+   
     public LocationAssociation getBestLocationAssociation() {
         return bestLocationAssociation;
     }
@@ -73,6 +65,14 @@ public class PersonImpl extends EntityImpl implements Person {
     }
 
     public String getName() {
-        return bestName;
+        if (this.names == null) {
+        	return null;
+        }
+        Name firstItem = this.names.get(0);
+        if(firstItem == null) {
+        	return null;
+        }
+        String nameString = firstItem.toString();
+        return nameString;
     }
 }
