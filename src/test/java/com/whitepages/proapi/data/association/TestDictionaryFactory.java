@@ -10,10 +10,10 @@ import java.util.UUID;
  */
 public class TestDictionaryFactory {
 
-    static final EntityId personId = new EntityId(EntityId.EntityType.PERSON, UUID.randomUUID());
-    static final EntityId businessId = new EntityId(EntityId.EntityType.BUSINESS, UUID.randomUUID());
-    static final EntityId locationId = new EntityId(EntityId.EntityType.LOCATION, UUID.randomUUID());
-    static final EntityId phoneId = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID());
+    static final EntityId personId = new EntityId(EntityId.EntityType.PERSON, UUID.randomUUID().toString());
+    static final EntityId businessId = new EntityId(EntityId.EntityType.BUSINESS, UUID.randomUUID().toString());
+    static final EntityId locationId = new EntityId(EntityId.EntityType.LOCATION, UUID.randomUUID().toString());
+    static final EntityId phoneId = new EntityId(EntityId.EntityType.PHONE, UUID.randomUUID().toString());
 
     /**
      * For association tests, we don't need wellformed entries, just stub entries

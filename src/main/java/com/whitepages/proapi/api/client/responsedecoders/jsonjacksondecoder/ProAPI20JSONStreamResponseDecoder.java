@@ -55,6 +55,7 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
 
         module.setMixInAnnotation(Phone.class, PhoneAnnotations.class);
         module.setMixInAnnotation(Phone.Reputation.class, PhoneReputationAnnotations.class);
+        module.setMixInAnnotation(Phone.ReputationDetails.class, ReputationDetailsAnnotations.class);
 
         module.setMixInAnnotation(Location.class, LocationAnnotations.class);
         module.setMixInAnnotation(Location.LatLong.class, LatLongAnnotations.class);
@@ -260,7 +261,7 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
             return calendar.getTime();
         }
     }
-
+    
     static class UnixTimestampDeserializer extends JsonDeserializer<Date> {
 
         @Override

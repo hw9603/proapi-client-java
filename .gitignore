@@ -1,13 +1,15 @@
 # Test Files
 api_key.txt
 
+# Local Working Directories
+target-archive/
+
 # Java
 *.class
 
 # IDEs
 .idea*
 .project
-*.iml
 
 # sbt
 target/
@@ -28,3 +30,6 @@ proapi-client-java-javadoc.zip
 .project
 .metadata/
 bin/
+
+# temporary Emacs files
+\#*

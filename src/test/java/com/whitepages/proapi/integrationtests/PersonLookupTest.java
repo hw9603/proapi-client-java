@@ -52,7 +52,7 @@ public class PersonLookupTest extends EntityLookupTest<Person> {
 
     @Override
     protected Response<Person> performQuery() throws FindException {
-        return getClient().findPeople(getQuery());
+        return getClient().findPeople(getQuery(), 10000, 10000);
     }
 
     protected PersonQuery getQuery() {

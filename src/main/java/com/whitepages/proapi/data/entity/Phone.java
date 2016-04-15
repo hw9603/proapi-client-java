@@ -115,37 +115,27 @@ public interface Phone extends Entity {
     }
     public static class Reputation {
 
+    	public Reputation() {
+    		
+    	}
+    	
     	public Reputation(int level,
-        		int spamScore,
-				int spamIndex,
-				int volumeScore,
+        		int volumeScore,
 				int reportCount) {
-			this(level, spamScore, spamIndex, volumeScore, reportCount, null);
+			this(level, volumeScore, reportCount, null);
         }
     	
         public Reputation(int level,
-        		int spamScore,
-				int spamIndex,
-				int volumeScore,
+        		int volumeScore,
 				int reportCount,
 				List<ReputationDetails> details) {
 			this.level = level;
-			this.spamScore = spamScore;
-			this.spamIndex = spamIndex;
 			this.volumeScore = volumeScore;
 			this.reportCount = reportCount;
 			this.details = details;
         }
 
-        public Integer getSpamScore() {
-            return spamScore;
-        }
-	
-		public Integer getSpamIndex() {
-	            return spamIndex;
-	        }
-	
-		public Integer getVolumeScore() {
+        public Integer getVolumeScore() {
 	            return volumeScore;
 	        }
 	
@@ -162,8 +152,6 @@ public interface Phone extends Entity {
 		}
 		
 		private List<ReputationDetails> details;
-		private Integer spamScore;
-		private Integer spamIndex;
 		private Integer volumeScore;
 		private Integer reportCount;
 		private Integer level;

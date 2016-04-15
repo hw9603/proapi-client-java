@@ -47,11 +47,11 @@ public class EntityId {
     }
  
     private EntityType type;
-    private UUID uuid;
+    private String key;
 
-    public EntityId(EntityType type, UUID uuid) {
+    public EntityId(EntityType type, String key) {
         this.type = type;
-        this.uuid = uuid;
+        this.key = key;
     }
 
     private static IllegalArgumentException invalidEntityIdStringException =
@@ -63,12 +63,13 @@ public class EntityId {
             throw invalidEntityIdStringException;
 
         EntityType type = EntityType.valueOf(idPieces[0].toUpperCase());
+        // check to make sure the middle piece (at index 1) is actually a UUID
         UUID uuid = UUID.fromString(idPieces[1]);
         
         if (type == null || uuid == null)
             throw invalidEntityIdStringException;
 
-        return new EntityId(type, uuid);
+        return new EntityId(type, key);
     }
 
     public EntityType getType() {
@@ -79,12 +80,12 @@ public class EntityId {
         this.type = type;
     }
 
-    public UUID getUuid() {
-        return uuid;
+    public String getKey() {
+        return key;
     }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     @Override
@@ -95,7 +96,7 @@ public class EntityId {
         EntityId entityId = (EntityId) o;
 
         if (type != entityId.type) return false;
-        if (uuid != null ? !uuid.equals(entityId.uuid) : entityId.uuid != null) return false;
+        if (key != null ? !key.equals(entityId.key) : entityId.key != null) return false;
 
         return true;
     }
@@ -103,13 +104,13 @@ public class EntityId {
     @Override
     public int hashCode() {
         int result = type != null ? type.hashCode() : 0;
-        result = 31 * result + (uuid != null ? uuid.hashCode() : 0);
+        result = 31 * result + (key != null ? key.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         //TODO: Capitalize correctly to match API.
-        return String.format("%s.%s", type, uuid);
+        return String.format("%s.%s", type, key);
     }
 }

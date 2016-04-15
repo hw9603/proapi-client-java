@@ -2,13 +2,12 @@ import com.whitepages.proapi.data.association.BusinessAssociation;
 import com.whitepages.proapi.data.association.LocationAssociation;
 import com.whitepages.proapi.data.association.PersonAssociation;
 import com.whitepages.proapi.data.association.PhoneAssociation;
-
 import com.whitepages.proapi.data.entity.Business;
 import com.whitepages.proapi.data.entity.Entity;
 import com.whitepages.proapi.data.entity.Location;
 import com.whitepages.proapi.data.entity.Person;
 import com.whitepages.proapi.data.entity.Phone;
-
+import com.whitepages.proapi.data.entity.Phone.ReputationDetails;
 import com.whitepages.proapi.data.util.TimePeriod;
 
 import java.util.List;
@@ -51,7 +50,11 @@ public class ExampleUtils {
         simpleLine( indent, "LineType:                    %s", phone.getLineType()           );
         simpleLine( indent, "PhoneNumber:                 %s", phone.getPhoneNumber()        );
         simpleLine( indent, "Is Prepaid:                  %s", phone.getPrepaid()            );
-        simpleLine( indent, "Reputation:                  %s", getSpamScore( phone )         );
+        simpleLine( indent, "Reputation (level):          %s", getLevel( phone )             );
+        simpleLine( indent, "Reputation (volume_score):   %s", getVolumeScore( phone )       );
+        simpleLine( indent, "Reputation (report_count):   %s", getReportCount( phone )       );
+        simpleLine( indent, "Reputation (details count):  %s", getReputationDetailsCount( phone )       );
+        
         simpleLine( indent, "Is Valid:                    %s", phone.getValid()              );
         
         dumpBaseEntity( phone, depth, indent );
@@ -165,10 +168,30 @@ public class ExampleUtils {
             simpleLine( indent, "Best Location:               %s", location.getName() );
     }
 
-    private static Integer getSpamScore( Phone phone ) {
+    private static Integer getLevel( Phone phone ) {
         Phone.Reputation reputation = phone.getReputation();
 
-        return null == reputation ? null : reputation.getSpamScore();
+        return null == reputation ? null : reputation.getLevel();
+    }
+
+    private static Integer getVolumeScore( Phone phone ) {
+        Phone.Reputation reputation = phone.getReputation();
+
+        return null == reputation ? null : reputation.getVolumeScore();
+    }
+
+    private static Integer getReportCount( Phone phone ) {
+        Phone.Reputation reputation = phone.getReputation();
+
+        return null == reputation ? null : reputation.getReportCount();
+    }
+
+    private static Integer getReputationDetailsCount( Phone phone ) {
+        Phone.Reputation reputation = phone.getReputation();
+
+        List<ReputationDetails> details = reputation.getDetails();
+        
+        return null == details ? null : details.size();
     }
 
     private static void simpleLine( int indent, String format, Object value ) {

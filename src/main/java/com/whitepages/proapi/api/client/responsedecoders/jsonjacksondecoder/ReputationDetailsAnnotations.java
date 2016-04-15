@@ -8,9 +8,13 @@ import com.whitepages.proapi.data.entity.Location;
  */
 abstract class ReputationDetailsAnnotations {
 
-	ReputationDetailsAnnotations(@JsonProperty("score") int score,
-									@JsonProperty("type") String type,
-									@JsonProperty("category") String category) {
+		@JsonProperty("score")
+		abstract int getScore();
 		
-	}
+		@JsonProperty("type")
+		abstract String getType();
+		
+		@JsonProperty("category")
+		abstract String getCategory();
+		
 }
