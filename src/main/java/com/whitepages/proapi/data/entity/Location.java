@@ -1,7 +1,14 @@
 package com.whitepages.proapi.data.entity;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.whitepages.proapi.data.entity.Phone.LineType;
 import com.whitepages.proapi.data.util.TimePeriod;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -9,6 +16,29 @@ import java.util.TreeMap;
  * The interface for Location {@link Entity} classes.
  * @see com.whitepages.proapi.data.entity.Entity
  */
+class AddressTypeDeserializer extends JsonDeserializer<Location.AddressType> {
+
+    @Override
+    public Location.AddressType deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) 
+    		throws IOException {
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+        Location.AddressType type = null;
+        try{
+            if(node != null){
+            	String nodeValue = node.asText().toLowerCase();
+                type = Location.AddressType.getCaseInsensitive(nodeValue);
+                if (type != null) {
+                    return type;
+                }
+            }
+        }catch(Exception e){
+            type = null;
+        }
+        return type;
+    }
+
+}
+
 public interface Location extends Entity {
 
     public enum LocationType {
@@ -147,6 +177,7 @@ public interface Location extends Entity {
         }
     }
     
+    @JsonDeserialize(using=AddressTypeDeserializer.class)
     public enum AddressType {
         FIRM,
         GENERAL_DELIVERY,
@@ -175,6 +206,15 @@ public interface Location extends Entity {
             return null;
         }
 
+        public static AddressType getCaseInsensitive(String value) {
+        	for (Map.Entry<String, AddressType> entry : namesMap.entrySet()) {
+        		String key = entry.getKey();
+        		if (key.equalsIgnoreCase(value))
+                    return namesMap.get(key);
+            }
+            return null;
+        }
+        
         public static AddressType forValue(String value) {
             AddressType e = namesMap.get(value);
             if (e == null)

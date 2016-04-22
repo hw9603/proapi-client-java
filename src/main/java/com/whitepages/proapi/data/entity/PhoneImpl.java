@@ -13,7 +13,6 @@ public class PhoneImpl extends EntityImpl implements Phone {
 
     private String phoneNumber;
     private String countryCallingCode;
-    private String extension;
     private String carrier;
 
     private Reputation reputation;
@@ -54,14 +53,6 @@ public class PhoneImpl extends EntityImpl implements Phone {
 
     public void setCountryCallingCode(String countryCallingCode) {
         this.countryCallingCode = countryCallingCode;
-    }
-
-    public String getExtension() {
-        return extension;
-    }
-
-    public void setExtension(String extension) {
-        this.extension = extension;
     }
 
     public String getCarrier() {

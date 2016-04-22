@@ -53,11 +53,6 @@ public class PhoneProxy extends EntityProxy implements Phone {
     }
 
     @Override
-    public String getExtension() {
-        return (phone == null) ? null : phone.getExtension();
-    }
-
-    @Override
     public String getCarrier() {
         return (phone == null) ? null : phone.getCarrier();
     }

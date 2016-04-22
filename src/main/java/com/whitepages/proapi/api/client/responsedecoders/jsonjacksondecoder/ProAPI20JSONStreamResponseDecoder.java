@@ -83,8 +83,10 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
     protected static ObjectMapper getDeserializer(Client client) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        mapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true);
-
+        //mapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true);
+        mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+        //mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
+        
         mapper.registerModule(dictionaryDeserializationModule(mapper, client));
         mapper.registerModule(annotationsMixinModule());
         mapper.registerModule(enumDeserializationModule());
@@ -95,38 +97,47 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
 
     static class EnumDeserializers extends SimpleDeserializers {
 
-        @SuppressWarnings("unchecked")
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		@SuppressWarnings("unchecked")
         @Override
         public JsonDeserializer<?> findEnumDeserializer(Class<?> type, DeserializationConfig config, BeanDescription beanDesc) throws JsonMappingException {
-            return createDeserializer((Class<Enum>) type);
+            return createDeserializer((Class<Enum<?>>) type);
         }
 
-        private <T extends Enum<T>> JsonDeserializer<?> createDeserializer(Class<T> enumClass) {
-            T[] enumValues = enumClass.getEnumConstants();
-            HashMap<String, T> map = createEnumValuesMap(enumValues);
-            return new EnumDeserializer(new EnumCaseInsensitiveResolver<T>(enumClass, enumValues, map));
+        private <T extends Enum<T>> JsonDeserializer<?> createDeserializer(Class<Enum<?>> enumClass) {
+            Enum<?>[] enumValues = enumClass.getEnumConstants();
+            HashMap<String, Enum<?>> map = createEnumValuesMap(enumValues);
+            EnumCaseInsensitiveResolver resolver = new EnumCaseInsensitiveResolver(enumClass, enumValues, map);
+            return new EnumDeserializer(resolver);
         }
 
-        private <T extends Enum<T>> HashMap<String, T> createEnumValuesMap(T[] enumValues) {
-            HashMap<String, T> map = new HashMap<String, T>();
+        private <T extends Enum<T>> HashMap<String, Enum<?>> createEnumValuesMap(Enum<?>[] enumValues) {
+            HashMap<String, Enum<?>> map = new HashMap<String, Enum<?>>();
             // from last to first, so that in case of duplicate values, first wins
             for (int i = enumValues.length; --i >= 0; ) {
-                T e = enumValues[i];
+                Enum<?> e = enumValues[i];
                 map.put(e.toString(), e);
             }
             return map;
         }
 
-        public static class EnumCaseInsensitiveResolver<T extends Enum<T>> extends EnumResolver<T> {
-            protected EnumCaseInsensitiveResolver(Class<T> enumClass, T[] enums, HashMap<String, T> map) {
+        @SuppressWarnings("serial")
+		public static class EnumCaseInsensitiveResolver extends EnumResolver {
+            
+        	protected EnumCaseInsensitiveResolver(Class<Enum<?>> enumClass, Enum<?>[] enums, HashMap<String, Enum<?>> map) {
                 super(enumClass, enums, map);
             }
 
             @Override
-            public T findEnum(String key) {
-                for (Map.Entry<String, T> entry : _enumsById.entrySet()) {
+            public Enum<?> findEnum(String key) {
+                for (Map.Entry<String, Enum<?>> entry : _enumsById.entrySet()) {
                     if (entry.getKey().equalsIgnoreCase(key)) {
-                        return entry.getValue();
+                        Enum<?> val = entry.getValue();
+                        return val;
                     }
                 }
                 return (_enumsById.keySet().contains("UNKNOWN")) ? _enumsById.get("UNKNOWN") : null;
@@ -136,7 +147,11 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
 
     static class DictionaryDeserializer extends StdDeserializer<ResponseDictionary> {
 
-        private final ObjectMapper mapper;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private final ObjectMapper mapper;
         private final Client client;
 
         DictionaryDeserializer(ObjectMapper mapper, Client client) {
@@ -181,7 +196,12 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
             return dictionary;
         }
 
-        private static final Map<String, String> legalEntitiesPathMap = new HashMap<String, String>(){{
+        private static final Map<String, String> legalEntitiesPathMap = new HashMap<String, String>(){/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		{
             put("Phone","belongs_to");
             put("Location","legal_entities_at");
         }};
@@ -225,7 +245,11 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
 
     static class TimePeriodDeserializer extends StdDeserializer<TimePeriod> {
 
-        private ObjectMapper mapper;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private ObjectMapper mapper;
 
         TimePeriodDeserializer(ObjectMapper mapper) {
             super(TimePeriod.class);

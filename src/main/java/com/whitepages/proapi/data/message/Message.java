@@ -1,7 +1,16 @@
 package com.whitepages.proapi.data.message;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.whitepages.proapi.data.entity.Phone;
+import com.whitepages.proapi.data.entity.Phone.LineType;
 
 /**
  * <p>Messages are generated as a result of requests to the API and contain both
@@ -27,16 +36,28 @@ public class Message {
     /**
      * The message severity.
      */
+	@JsonDeserialize(using=MessageSeverityDeserializer.class)
     public enum Severity {
         ERROR,
         WARNING,
         INFO,
-        DEBUG
+        DEBUG;
+    	
+    	public static Severity getCaseInsensitive(String value) {
+    		
+        	for (Severity entry : Severity.values()) {
+        		String key = entry.name();
+        		if (key.equalsIgnoreCase(value))
+                    return entry;
+            }
+            return null;
+        }
     }
 
     /**
      * The primary machine readable categorization of messages.
      */
+	@JsonDeserialize(using=MessageTypeDeserializer.class)
     public enum MessageType {
         UNKNOWN,
         INTERNAL,
@@ -51,6 +72,16 @@ public class Message {
         ENTITY_ID_PARSE,
         ENTITY_ID_TYPE_MISMATCH,
         NON_DURABLE_ENTITY_ID_LOOKUP;
+    	
+    	public static MessageType getCaseInsensitive(String value) {
+    		
+        	for (MessageType entry : MessageType.values()) {
+        		String key = entry.name();
+        		if (key.equalsIgnoreCase(value))
+                    return entry;
+            }
+            return null;
+        }
     }
 
     /**
@@ -134,4 +165,50 @@ public class Message {
     public String toString() {
         return String.format("<%s %s %s (%s)>", type, code, severity, message);
     }
+}
+
+class MessageSeverityDeserializer extends JsonDeserializer<Message.Severity> {
+
+    @Override
+    public Message.Severity deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) 
+    		throws IOException {
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+        Message.Severity type = null;
+        try{
+            if(node != null){
+            	String nodeValue = node.asText().toLowerCase();
+                type = Message.Severity.getCaseInsensitive(nodeValue);
+                if (type != null) {
+                    return type;
+                }
+            }
+        }catch(Exception e){
+            type = null;
+        }
+        return type;
+    }
+
+}
+
+class MessageTypeDeserializer extends JsonDeserializer<Message.MessageType> {
+
+    @Override
+    public Message.MessageType deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) 
+    		throws IOException {
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+        Message.MessageType type = null;
+        try{
+            if(node != null){
+            	String nodeValue = node.asText().toLowerCase();
+                type = Message.MessageType.getCaseInsensitive(nodeValue);
+                if (type != null) {
+                    return type;
+                }
+            }
+        }catch(Exception e){
+            type = null;
+        }
+        return type;
+    }
+
 }
