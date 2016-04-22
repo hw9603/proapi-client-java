@@ -83,7 +83,7 @@ public abstract class ProAPI20JSONStreamResponseDecoder<R extends Response<?>> i
     protected static ObjectMapper getDeserializer(Client client) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        //mapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true);
+        mapper.configure(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL, true);
         mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
         //mapper.configure(DeserializationFeature.READ_ENUMS_USING_TO_STRING, true);
         
