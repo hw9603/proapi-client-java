@@ -102,8 +102,6 @@ public interface Phone extends Entity {
 
     public String getCountryCallingCode();
 
-    public String getExtension();
-
     public String getCarrier();
 
     public Reputation getReputation();
