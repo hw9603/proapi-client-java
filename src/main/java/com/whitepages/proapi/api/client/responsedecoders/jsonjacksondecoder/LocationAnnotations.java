@@ -24,9 +24,6 @@ abstract class LocationAnnotations extends EntityAnnotations {
     @JsonProperty("standard_address_line2")
     abstract String getStandardAddressLine2();
 
-    @JsonProperty("standard_address_location")
-    abstract String getStandardAddressLocation();
-
     @JsonProperty("city")
     abstract String getCity();
 
@@ -39,32 +36,8 @@ abstract class LocationAnnotations extends EntityAnnotations {
     @JsonProperty("country_code")
     abstract String getCountryCode();
 
-    @JsonProperty("apt_type")
-    abstract String getAptType();
-
     @JsonProperty("zip4")
     abstract String getZip4();
-
-    @JsonProperty("house")
-    abstract String getHouse();
-
-    @JsonProperty("street_name")
-    abstract String getStreetName();
-
-    @JsonProperty("street_type")
-    abstract String getStreetType();
-
-    @JsonProperty("pre_dir")
-    abstract String getPreDir();
-
-    @JsonProperty("post_dir")
-    abstract String getPostDir();
-
-    @JsonProperty("apt_number")
-    abstract String getAptNumber();
-
-    @JsonProperty("box_number")
-    abstract String getBoxNumber();
 
     @JsonProperty("valid_for")
     abstract TimePeriod getValidFor();

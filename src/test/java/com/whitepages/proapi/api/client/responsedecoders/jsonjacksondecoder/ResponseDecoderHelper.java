@@ -21,6 +21,7 @@ public class ResponseDecoderHelper {
 
     private Response<Business> businessResponse = decodeBusinessResponse();
     private Response<Phone> phoneResponse = decodePhoneResponse();
+    private Response<Phone> phoneNonFixedVoipResponse = decodePhoneNonFixedVoipResponse();
     private Response<Location> locationResponse = decodeLocationResponse();
     private Response<Person> personResponse = decodePersonResponse();
 
@@ -30,6 +31,10 @@ public class ResponseDecoderHelper {
 
     Response<Phone> getPhoneResponse() {
         return phoneResponse;
+    }
+
+    Response<Phone> getPhoneNonFixedVoipResponse() {
+        return phoneNonFixedVoipResponse;
     }
 
     Response<Location> getLocationResponse() {
@@ -54,6 +59,17 @@ public class ResponseDecoderHelper {
     private Response<Phone> decodePhoneResponse() {
         try {
             return new PhoneProAPI20JSONStreamResponseDecoder().decode(readFile("/jsonresponses/phoneResponse.json"), client);
+        } catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    private Response<Phone> decodePhoneNonFixedVoipResponse() {
+        try {
+        	HttpResponse fileResponse = readFile("/jsonresponses/phoneNonFixedVoipResponse.json");
+        	PhoneProAPI20JSONStreamResponseDecoder decoder = new PhoneProAPI20JSONStreamResponseDecoder();
+        	Response<Phone> response = decoder.decode(fileResponse, client);
+        	return response;
         } catch(Exception e) {
             throw new RuntimeException(e);
         }

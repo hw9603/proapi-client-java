@@ -7,6 +7,7 @@ import com.whitepages.proapi.data.entity.Entity;
 import com.whitepages.proapi.data.entity.Location;
 import com.whitepages.proapi.data.entity.Person;
 import com.whitepages.proapi.data.entity.Phone;
+import com.whitepages.proapi.data.entity.Phone.Reputation;
 import com.whitepages.proapi.data.entity.Phone.ReputationDetails;
 import com.whitepages.proapi.data.util.TimePeriod;
 
@@ -46,18 +47,43 @@ public class ExampleUtils {
         simpleLine( indent, "Carrier:                     %s", phone.getCarrier()            );
         simpleLine( indent, "Country Calling Code:        %s", phone.getCountryCallingCode() );
         simpleLine( indent, "Do Not Call:                 %s", phone.getDoNotCall()          );
-        simpleLine( indent, "Extension:                   %s", phone.getExtension()          );
         simpleLine( indent, "LineType:                    %s", phone.getLineType()           );
         simpleLine( indent, "PhoneNumber:                 %s", phone.getPhoneNumber()        );
         simpleLine( indent, "Is Prepaid:                  %s", phone.getPrepaid()            );
-        simpleLine( indent, "Reputation (level):          %s", getLevel( phone )             );
-        simpleLine( indent, "Reputation (volume_score):   %s", getVolumeScore( phone )       );
-        simpleLine( indent, "Reputation (report_count):   %s", getReportCount( phone )       );
-        simpleLine( indent, "Reputation (details count):  %s", getReputationDetailsCount( phone )       );
-        
         simpleLine( indent, "Is Valid:                    %s", phone.getValid()              );
-        
+        simpleLine( indent, "Is Connected:                %s", phone.getConnected()          );
+        dumpReputation(phone.getReputation(), depth, indent + _INDENT);
         dumpBaseEntity( phone, depth, indent );
+    }
+
+    private static void dumpReputation( Reputation reputation, int depth, int indent ) {
+    
+    	simpleLine(indent, "Reputation:");
+    	if (reputation != null) {
+	        simpleLine( indent, "Level:                   %s", reputation.getLevel()       );
+	        simpleLine( indent, "Volume Score:            %s", reputation.getVolumeScore() );
+	        simpleLine( indent, "Report Count:            %s", reputation.getReportCount() );
+	        dumpReputationDetails(reputation.getDetails(), depth, indent + _INDENT);
+    	} else {
+    		simpleLine(indent, "null");
+    	}
+    }
+    
+    private static void dumpReputationDetails( List<ReputationDetails> details, int depth, int indent ) {
+        
+    	simpleLine(indent, "Details:");
+    	if (details != null) {
+    		for (ReputationDetails detail: details) {
+    			simpleLine( indent, "[");
+    	        simpleLine( indent + _INDENT, "Score:           %s", detail.getScore() );
+    	        simpleLine( indent + _INDENT, "Type:            %s", detail.getType() );
+    	        simpleLine( indent + _INDENT, "Category:        %s", detail.getCategory() );
+    	        simpleLine( indent, "]");
+    		}
+	        
+    	} else {
+    		simpleLine(indent, "null");
+    	}
     }
 
     private static void dumpPerson( Person person, int depth, int indent ) {

@@ -56,7 +56,7 @@ public class PersonLookupTest extends EntityLookupTest<Person> {
     }
 
     protected PersonQuery getQuery() {
-        PersonQuery q = new PersonQuery("John", null, "Smith", null, null, "98101");
+        PersonQuery q = new PersonQuery("John", null, "Smith", null, "WA", null);
         return q;
     }
 

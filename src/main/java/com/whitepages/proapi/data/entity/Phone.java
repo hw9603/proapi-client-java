@@ -1,10 +1,41 @@
 package com.whitepages.proapi.data.entity;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.whitepages.proapi.data.association.LocationAssociation;
+import com.whitepages.proapi.data.entity.Phone.LineType;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+
+class LineTypeDeserializer extends JsonDeserializer<Phone.LineType> {
+
+    @Override
+    public Phone.LineType deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) 
+    		throws IOException {
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+        Phone.LineType type = null;
+        try{
+            if(node != null){
+            	String nodeValue = node.asText().toLowerCase();
+                type = Phone.LineType.getCaseInsensitive(nodeValue);
+                if (type != null) {
+                    return type;
+                }
+            }
+        }catch(Exception e){
+            type = null;
+        }
+        return type;
+    }
+
+}
 
 /**
  * The interface for Phone {@link Entity} classes.
@@ -12,6 +43,7 @@ import java.util.TreeMap;
  */
 public interface Phone extends Entity {
 
+	@JsonDeserialize(using=LineTypeDeserializer.class)
     public enum LineType {
         LANDLINE,
         MOBILE,
@@ -44,12 +76,23 @@ public interface Phone extends Entity {
             return null;
         }
 
+        public static LineType getCaseInsensitive(String value) {
+        	for (Map.Entry<String, LineType> entry : namesMap.entrySet()) {
+        		String key = entry.getKey();
+        		if (key.equalsIgnoreCase(value))
+                    return namesMap.get(key);
+            }
+            return null;
+        }
+        
         public static LineType forValue(String value) {
             LineType e = namesMap.get(value);
             if (e == null)
                 throw new IllegalArgumentException(String.format("Invalid enum string. Got %s, expected ", value, namesMap.keySet()));
             return e;
         }
+        
+        
 
     }
 
@@ -58,8 +101,6 @@ public interface Phone extends Entity {
     public String getPhoneNumber();
 
     public String getCountryCallingCode();
-
-    public String getExtension();
 
     public String getCarrier();
 
