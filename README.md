@@ -2,7 +2,7 @@
 
 Jeffrey C Reinecke <jreinecke@whitepages.com>, Amy Zou <azou@whitepages.com>
 
-©2015, Whitepages Inc.
+©2015-2016, Whitepages Inc.
 
 ## Description
 
@@ -40,7 +40,7 @@ This library depends on the following resources:
 * [FasterXML Jackson Annotations](https://github.com/FasterXML/jackson-annotations)
 * [FasterXML Jackson Data-Bind](https://github.com/FasterXML/jackson-databind)
 
-This library has been tested against Jackson 2.4.4.
+This library has been tested against Jackson 2.4.4, 2.5.3, and 2.7.3.
 
 ### Compiling the Repo
 
