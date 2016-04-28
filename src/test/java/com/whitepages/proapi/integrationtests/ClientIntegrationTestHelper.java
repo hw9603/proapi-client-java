@@ -21,7 +21,7 @@ public class ClientIntegrationTestHelper {
         }
         apiKey = key;
     }
-
+    
     public static String getApiKey() {
         return apiKey;
     }
