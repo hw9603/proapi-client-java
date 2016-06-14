@@ -36,6 +36,13 @@ public class PersonQuery extends WhereQuery implements Query {
         this.middleName = middleName;
         this.lastName = lastName;
     }
+    
+    public PersonQuery(String firstName, String middleName, String lastName, String streetLine1, String streetLine2, String city, String stateCode, String postalCode) {
+        super(streetLine1, streetLine2, city, stateCode, postalCode);
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+    }
 
     public String getName() {
         return name;

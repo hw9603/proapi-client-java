@@ -49,13 +49,23 @@ public class PersonLookupTest extends EntityLookupTest<Person> {
             }
         }
     }
+    
+    @Test
+    public void StreetLine1_query_works_as_expected() throws FindException {
+    	PersonQuery q = new PersonQuery("Rob", null, "Eleveld", "1021 NE 72nd St", null, null, null, "98115");
+    	q.setUseHistorical(true);
+    	Response<Person> response = getClient().findPeople(q);
+    	List<Person> results = response.getResults();
+    	assertThat("There should be at least one person", results.size() > 0);
+        
+    }
 
     @Override
     protected Response<Person> performQuery() throws FindException {
-        return getClient().findPeople(getQuery(), 10000, 10000);
+        return getClient().findPeople(getPersonQuery1(), 10000, 10000);
     }
 
-    protected PersonQuery getQuery() {
+    protected PersonQuery getPersonQuery1() {
         PersonQuery q = new PersonQuery("John", null, "Smith", null, "WA", null);
         return q;
     }
