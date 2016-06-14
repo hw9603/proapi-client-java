@@ -5,6 +5,7 @@ import com.whitepages.proapi.api.client.FindException;
 import com.whitepages.proapi.api.query.PersonQuery;
 import com.whitepages.proapi.api.response.Response;
 import com.whitepages.proapi.data.entity.Entity;
+import com.whitepages.proapi.data.entity.Location;
 import com.whitepages.proapi.data.entity.Person;
 import org.junit.Test;
 
@@ -56,6 +57,13 @@ public class PersonLookupTest extends EntityLookupTest<Person> {
     	q.setUseHistorical(true);
     	Response<Person> response = getClient().findPeople(q);
     	List<Person> results = response.getResults();
+    	for (Person person : results) {
+    		System.out.println(person.getName());
+    		List<Location> locations = person.getLocations();
+    		for (Location location : locations) {
+    			System.out.println(location.getStandardAddressLine1());
+    		}
+    	}
     	assertThat("There should be at least one person", results.size() > 0);
         
     }
