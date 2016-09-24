@@ -1,11 +1,6 @@
 package com.whitepages.proapi.api.client;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
-import java.util.Date;
-import java.util.Properties;
 
 /**
  * <p>The configuration data class.</p>
